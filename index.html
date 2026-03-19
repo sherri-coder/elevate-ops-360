@@ -126,7 +126,7 @@ nav.scrolled {
 
 .hero-content {
   position: relative; z-index: 10;
-  max-width: 860px;
+  max-width: 1000px; width: 100%;
 }
 
 .hero-badge {
@@ -160,8 +160,8 @@ nav.scrolled {
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 6.5vw, 6rem);
-  font-weight: 900; line-height: 1.04;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 900; line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 1.75rem;
   animation: fadeUp 0.85s 0.45s ease both;
@@ -1177,7 +1177,7 @@ footer {
 
     <!-- Large horizontal logo in hero -->
     <div class="hero-logo-wrap">
-      <img src="logo-web.png" alt="Elevate Ops 360 — We run the backend so you can run your business." style="height:200px;width:auto;max-width:95%;display:block;margin:0 auto;">
+      <img src="logo-web.png" alt="Elevate Ops 360 — We run the backend so you can run your business." style="height:260px;width:auto;max-width:95%;display:block;margin:0 auto;">
     </div>
 
     <h1>
@@ -1942,7 +1942,7 @@ reveals.forEach(el => observer.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
 }, 600);
- 
+
 /* ─── FAQ ACCORDION ─── */
 function toggleFaq(btn) {
   const item = b
