@@ -1941,7 +1941,7 @@ reveals.forEach(el => observer.observe(el));
 // Fallback: if observer doesn't fire (iframe / preview environments), show everything
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
-}, 600);
+}, 600); 
 
 /* ─── FAQ ACCORDION ─── */
 function toggleFaq(btn) {
