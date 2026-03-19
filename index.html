@@ -885,7 +885,7 @@ footer {
   /* ── Hero ── */
   .hero { padding: 7rem 1.5rem 4.5rem; }
   .hero-badge { font-size: 0.55rem; padding: 0.4rem 0.85rem; }
-  .hero-logo-wrap img { height: 70px; }
+  .hero-logo-wrap img { height: 100px; }
   .hero h1 { font-size: clamp(2rem, 9vw, 3rem); line-height: 1.08; }
   .hero-sub { font-size: 0.88rem; margin-bottom: 2rem; }
   .hero-actions { flex-direction: column; gap: 0.75rem; align-items: stretch; }
@@ -1177,7 +1177,7 @@ footer {
 
     <!-- Large horizontal logo in hero -->
     <div class="hero-logo-wrap">
-      <img src="logo-web.png" alt="Elevate Ops 360 — We run the backend so you can run your business." style="height:130px;width:auto;max-width:90%;display:block;margin:0 auto;">
+      <img src="logo-web.png" alt="Elevate Ops 360 — We run the backend so you can run your business." style="height:200px;width:auto;max-width:95%;display:block;margin:0 auto;">
     </div>
 
     <h1>
@@ -1941,7 +1941,7 @@ reveals.forEach(el => observer.observe(el));
 // Fallback: if observer doesn't fire (iframe / preview environments), show everything
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
-}, 600); 
+}, 600);
 
 /* ─── FAQ ACCORDION ─── */
 function toggleFaq(btn) {
