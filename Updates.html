@@ -413,7 +413,7 @@
 <!-- MAIN -->
 <div class="main">
 
-  <form id="update-form" action="https://formspree.io/f/https://formspree.io/f/mvzlbkny" method="POST">
+  <form id="update-form" action="https://formspree.io/f/mvzlbkny" method="POST">
 
     <!-- CLIENT ID BAR -->
     <div class="client-bar">
@@ -1079,8 +1079,6 @@
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
-    // Formspree submission — uncomment when ready:
-    /*
     fetch(this.action, {
       method: 'POST',
       body: new FormData(this),
@@ -1093,9 +1091,6 @@
         alert('Something went wrong. Please email hello@elevateops360.com directly.');
       }
     });
-    
-
-   
   });
 
   function showSuccess() {
