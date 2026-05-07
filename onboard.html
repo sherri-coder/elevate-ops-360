@@ -1633,7 +1633,7 @@
           </div>
 
           <div class="field">
-            <input type="checkbox" name="consent" id="consent_cb" required style="display:none;">
+            <input type="checkbox" name="consent" id="consent_cb" style="display:none;">
             <div id="consent_toggle" onclick="toggleConsent('consent_cb', 'consent_toggle')" style="display:flex; align-items:flex-start; gap:14px; background:rgba(255,255,255,0.03); border:1.5px solid rgba(214,185,140,0.22); border-radius:8px; padding:16px; cursor:pointer; transition: border-color 0.2s, background 0.2s;">
               <div id="consent_box" style="width:20px; height:20px; flex-shrink:0; border:1.5px solid rgba(214,185,140,0.4); border-radius:4px; margin-top:1px; display:flex; align-items:center; justify-content:center; transition: all 0.2s; background: transparent;">
               </div>
@@ -1802,7 +1802,17 @@
   // Handle form submission
   document.getElementById('onboard-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
+    // Check consent is checked
+    const consent = document.getElementById('consent_cb');
+    if (!consent.checked) {
+      const toggle = document.getElementById('consent_toggle');
+      toggle.style.borderColor = 'var(--error)';
+      toggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      alert('Please check the authorization box before submitting.');
+      return;
+    }
+
     const btn = this.querySelector('.btn-submit');
     btn.disabled = true;
     btn.textContent = 'Submitting...';
