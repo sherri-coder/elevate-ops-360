@@ -819,7 +819,7 @@
 
 <!-- FORM -->
 <div class="form-wrapper">
-  <form id="onboard-form" action="https://formspree.io/f/xojrnery" method="POST">
+  <form id="onboard-form" action="https://formspree.io/f/xojrnery" method="POST" novalidate>
 
     <!-- ══════════ STEP 1: PACKAGE ══════════ -->
     <div class="form-step active" data-step="0">
@@ -1827,8 +1827,12 @@
       } else {
         btn.disabled = false;
         btn.textContent = 'Submit & Launch My AI Team ✦';
-        alert('Something went wrong. Please try again or email us directly.');
+        alert('Submission failed. Please check that your Formspree email is verified, then try again. Or email us directly at hello@elevateops360.com.');
       }
+    }).catch(err => {
+      btn.disabled = false;
+      btn.textContent = 'Submit & Launch My AI Team ✦';
+      alert('Connection error. Please check your internet connection and try again. Error: ' + err.message);
     });
   });
 
