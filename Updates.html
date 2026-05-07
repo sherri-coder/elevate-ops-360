@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaign Updates — Elevate Ops 360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D6B98C;
+    --gold-light: #e8d5b5;
+    --gold-dim: rgba(214,185,140,0.12);
+    --gold-border: rgba(214,185,140,0.22);
+    --cream: #FAF9F7;
+    --cream-dim: rgba(250,249,247,0.65);
+    --bg: #0d0c0b;
+    --bg2: #141210;
+    --bg3: #1a1714;
+    --surface: rgba(255,255,255,0.04);
+    --text: #e8e4de;
+    --text-dim: rgba(232,228,222,0.55);
+    --error: #e07070;
+    --success: #7ec8a0;
+    --urgent: rgba(224,112,112,0.15);
+    --urgent-border: rgba(224,112,112,0.35);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% -5%, rgba(214,185,140,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 35% at 85% 85%, rgba(214,185,140,0.04) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,12,11,0.93);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .header-logo { display: flex; align-items: center; gap: 12px; }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold);
+  }
+
+  .logo-text {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--cream-dim);
+  }
+
+  .header-badge {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold-border);
+    padding: 4px 12px; border-radius: 20px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center; padding: 64px 24px 48px;
+    max-width: 680px; margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--gold-border);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.1; color: var(--cream);
+    margin-bottom: 16px; letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero p {
+    font-size: 14.5px; color: var(--text-dim);
+    max-width: 480px; margin: 0 auto; line-height: 1.7;
+  }
+
+  /* ── MAIN WRAPPER ── */
+  .main {
+    position: relative; z-index: 1;
+    max-width: 820px; margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── CLIENT ID BAR ── */
+  .client-bar {
+    background: var(--surface);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius);
+    padding: 20px 28px;
+    margin-bottom: 32px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .client-field label {
+    display: block; font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 7px;
+  }
+
+  .client-field input, .client-field select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(214,185,140,0.18);
+    border-radius: var(--radius-sm);
+    color: var(--cream); font-family: 'DM Sans', sans-serif;
+    font-size: 14px; padding: 10px 14px; outline: none;
+    transition: border-color 0.2s, background 0.2s; width: 100%;
+  }
+  .client-field input::placeholder { color: rgba(232,228,222,0.25); }
+  .client-field input:focus, .client-field select:focus {
+    border-color: var(--gold); background: rgba(214,185,140,0.06);
+  }
+  .client-field select {
+    appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D6B98C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .client-field select option { background: #1a1714; }
+
+  /* ── REQUEST TYPE HEADING ── */
+  .section-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+
+  /* ── REQUEST TYPE GRID ── */
+  .request-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 36px;
+  }
+
+  .request-tile {
+    border: 1.5px solid var(--gold-border);
+    border-radius: var(--radius); padding: 18px 16px;
+    cursor: pointer; transition: all 0.22s ease;
+    background: var(--surface); position: relative;
+    text-align: left; user-select: none;
+  }
+
+  .request-tile:hover {
+    border-color: var(--gold); background: var(--gold-dim);
+  }
+
+  .request-tile.selected {
+    border-color: var(--gold); background: var(--gold-dim);
+  }
+
+  .request-tile.selected::after {
+    content: '✦';
+    position: absolute; top: 10px; right: 12px;
+    color: var(--gold); font-size: 11px;
+  }
+
+  .tile-icon {
+    font-size: 20px; margin-bottom: 10px; display: block;
+  }
+
+  .tile-name {
+    font-size: 12.5px; font-weight: 500; color: var(--cream);
+    margin-bottom: 4px; line-height: 1.3;
+  }
+
+  .tile-desc {
+    font-size: 11.5px; color: var(--text-dim); line-height: 1.5;
+  }
+
+  /* ── FORM PANELS ── */
+  .form-panel {
+    display: none;
+    animation: fadeUp 0.35s ease forwards;
+  }
+  .form-panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--gold-border);
+    border-radius: 14px; padding: 32px 36px;
+    margin-bottom: 20px; position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.35;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 28px; line-height: 1.65;
+  }
+
+  /* ── FORM GRID ── */
+  .fg { display: grid; gap: 18px; }
+  .fg-2 { grid-template-columns: 1fr 1fr; }
+  .fg-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .span-2 { grid-column: span 2; }
+  .span-3 { grid-column: span 3; }
+
+  /* ── FIELD ── */
+  .f { display: flex; flex-direction: column; gap: 7px; }
+
+  .f label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .f label .opt {
+    color: var(--text-dim); font-weight: 300; text-transform: none;
+    letter-spacing: 0; font-size: 11px;
+  }
+  .f label .req { color: var(--error); margin-left: 2px; }
+
+  .f input, .f select, .f textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(214,185,140,0.18);
+    border-radius: var(--radius-sm);
+    color: var(--cream); font-family: 'DM Sans', sans-serif;
+    font-size: 14px; padding: 11px 15px; outline: none; width: 100%;
+    transition: border-color 0.2s, background 0.2s; appearance: none;
+  }
+  .f input::placeholder, .f textarea::placeholder { color: rgba(232,228,222,0.25); }
+  .f input:focus, .f select:focus, .f textarea:focus {
+    border-color: var(--gold); background: rgba(214,185,140,0.06);
+  }
+  .f select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D6B98C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 13px center;
+    padding-right: 36px; cursor: pointer;
+  }
+  .f select option { background: #1a1714; color: var(--cream); }
+  .f textarea { resize: vertical; min-height: 100px; }
+  .f .hint { font-size: 11.5px; color: var(--text-dim); font-style: italic; line-height: 1.5; }
+
+  /* ── PILL CHECKBOXES ── */
+  .pills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
+  .pill {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--gold-border); border-radius: 20px;
+    padding: 6px 13px; font-size: 12.5px; color: var(--text-dim);
+    cursor: pointer; transition: all 0.18s ease; user-select: none;
+  }
+  .pill input { display: none; }
+  .pill:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+  .pill.on { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); }
+  .pill.on::before { content: '✦ '; font-size: 9px; }
+
+  /* ── URGENCY BANNER ── */
+  .urgency-row {
+    display: flex; gap: 10px; margin-bottom: 24px;
+  }
+  .urgency-opt {
+    flex: 1; border: 1.5px solid var(--gold-border);
+    border-radius: var(--radius); padding: 14px 16px;
+    cursor: pointer; transition: all 0.2s; background: var(--surface);
+    text-align: center; user-select: none;
+  }
+  .urgency-opt .u-label { font-size: 12px; font-weight: 500; color: var(--cream); margin-bottom: 2px; }
+  .urgency-opt .u-desc { font-size: 11px; color: var(--text-dim); }
+  .urgency-opt:hover { border-color: var(--gold); background: var(--gold-dim); }
+  .urgency-opt.sel-normal.active { border-color: var(--success); background: rgba(126,200,160,0.08); }
+  .urgency-opt.sel-normal.active .u-label { color: var(--success); }
+  .urgency-opt.sel-soon.active { border-color: var(--gold); background: var(--gold-dim); }
+  .urgency-opt.sel-soon.active .u-label { color: var(--gold); }
+  .urgency-opt.sel-urgent.active { border-color: var(--error); background: var(--urgent); }
+  .urgency-opt.sel-urgent.active .u-label { color: var(--error); }
+  input[name="urgency"] { display: none; }
+
+  /* ── SUBMIT AREA ── */
+  .submit-area {
+    display: flex; align-items: center; justify-content: flex-end;
+    gap: 16px; margin-top: 28px;
+  }
+
+  .btn-submit {
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 36px; border-radius: 6px; cursor: pointer;
+    border: none; background: var(--gold); color: var(--bg);
+    transition: all 0.25s ease;
+  }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(214,185,140,0.2); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .submit-note { font-size: 12px; color: var(--text-dim); font-style: italic; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center; padding: 56px 24px;
+    border: 1px dashed var(--gold-border);
+    border-radius: 14px; color: var(--text-dim);
+  }
+  .empty-state .e-icon { font-size: 32px; margin-bottom: 16px; opacity: 0.5; }
+  .empty-state p { font-size: 14px; max-width: 340px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── SUCCESS ── */
+  .success-screen {
+    display: none; text-align: center;
+    padding: 72px 24px; animation: fadeUp 0.4s ease;
+  }
+  .success-screen.visible { display: block; }
+
+  .success-ring {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 2px solid var(--gold); background: var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 28px;
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(214,185,140,0.25); }
+    50% { box-shadow: 0 0 0 14px rgba(214,185,140,0); }
+  }
+
+  .success-screen h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
+    font-weight: 300; color: var(--cream); margin-bottom: 14px;
+  }
+  .success-screen p { font-size: 14.5px; color: var(--text-dim); max-width: 420px; margin: 0 auto 36px; line-height: 1.7; }
+
+  .another-btn {
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 12px 28px; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--gold-border); background: transparent;
+    color: var(--gold); transition: all 0.2s;
+  }
+  .another-btn:hover { background: var(--gold-dim); border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--gold-border);
+    padding: 24px 32px; text-align: center;
+    font-size: 12px; color: var(--text-dim);
+    position: relative; z-index: 1;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .request-grid { grid-template-columns: 1fr 1fr; }
+    .fg-2, .fg-3 { grid-template-columns: 1fr; }
+    .span-2, .span-3 { grid-column: span 1; }
+    .client-bar { grid-template-columns: 1fr; }
+    .card { padding: 24px 20px; }
+    .urgency-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <div class="logo-mark">E°</div>
+    <span class="logo-text">Elevate Ops 360</span>
+  </div>
+  <div class="header-badge">Client Portal</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Campaign Management</div>
+  <h1>Need to update your<br><em>campaign?</em></h1>
+  <p>New listing, open house, content request, or anything else — submit it here and your AI team will have it handled. We review every request within 24 hours.</p>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <form id="update-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+    <!-- CLIENT ID BAR -->
+    <div class="client-bar">
+      <div class="client-field">
+        <label>Your Name <span style="color:var(--error)">*</span></label>
+        <input type="text" name="client_name" placeholder="Full name" required>
+      </div>
+      <div class="client-field">
+        <label>Your Email <span style="color:var(--error)">*</span></label>
+        <input type="email" name="client_email" placeholder="your@email.com" required>
+      </div>
+      <div class="client-field">
+        <label>Your Package</label>
+        <select name="client_package">
+          <option value="" disabled selected>Select package</option>
+          <option>Elevate Visibility — $25/mo</option>
+          <option>Elevate AI Systems — $99/mo</option>
+          <option>Elevate AI Build — Custom</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- REQUEST TYPE -->
+    <div class="section-label">What do you need? Select a request type.</div>
+
+    <div class="request-grid">
+      <div class="request-tile" onclick="selectType(this, 'listing')">
+        <span class="tile-icon">🏠</span>
+        <div class="tile-name">New Listing</div>
+        <div class="tile-desc">Promote a new property hitting the market</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'openhouse')">
+        <span class="tile-icon">📍</span>
+        <div class="tile-name">Open House</div>
+        <div class="tile-desc">Announce an upcoming open house event</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'content')">
+        <span class="tile-icon">✏️</span>
+        <div class="tile-name">Content Request</div>
+        <div class="tile-desc">Request a specific post, reel, caption, or graphic</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'win')">
+        <span class="tile-icon">🏆</span>
+        <div class="tile-name">Client Win</div>
+        <div class="tile-desc">Share a closed deal or success story for content</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'brand')">
+        <span class="tile-icon">🎨</span>
+        <div class="tile-name">Brand Update</div>
+        <div class="tile-desc">New photos, updated logo, bio change, or style shift</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'platform')">
+        <span class="tile-icon">📲</span>
+        <div class="tile-name">Add a Platform</div>
+        <div class="tile-desc">Activate a new social channel not in your current plan</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'upgrade')">
+        <span class="tile-icon">⬆️</span>
+        <div class="tile-name">Upgrade Package</div>
+        <div class="tile-desc">Add AI agents or move to a higher service tier</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'feedback')">
+        <span class="tile-icon">💬</span>
+        <div class="tile-name">Campaign Feedback</div>
+        <div class="tile-desc">Something's off — tone, style, direction needs adjusting</div>
+      </div>
+      <div class="request-tile" onclick="selectType(this, 'pause')">
+        <span class="tile-icon">⏸</span>
+        <div class="tile-name">Pause Campaign</div>
+        <div class="tile-desc">Temporarily pause posting and set a resume date</div>
+      </div>
+    </div>
+
+    <input type="hidden" name="request_type" id="request_type_input">
+
+    <!-- ══ EMPTY DEFAULT ══ -->
+    <div class="form-panel active" id="panel-default">
+      <div class="empty-state">
+        <div class="e-icon">◈</div>
+        <p>Select a request type above and the right fields will appear here automatically.</p>
+      </div>
+    </div>
+
+    <!-- ══ NEW LISTING ══ -->
+    <div class="form-panel" id="panel-listing">
+      <div class="card">
+        <h2 class="card-title">New Listing Promotion</h2>
+        <p class="card-desc">Give us the details and we'll create your listing content across all active platforms. The more info you provide, the better the content.</p>
+
+        <div class="section-label" style="margin-bottom:12px;">Priority</div>
+        <div class="urgency-row">
+          <div class="urgency-opt sel-normal" onclick="setUrgency('normal', this)">
+            <div class="u-label">Standard</div>
+            <div class="u-desc">Goes live in 2–3 days</div>
+          </div>
+          <div class="urgency-opt sel-soon" onclick="setUrgency('soon', this)">
+            <div class="u-label">Priority</div>
+            <div class="u-desc">Goes live within 24 hrs</div>
+          </div>
+          <div class="urgency-opt sel-urgent" onclick="setUrgency('urgent', this)">
+            <div class="u-label">Urgent</div>
+            <div class="u-desc">Listing is live NOW</div>
+          </div>
+        </div>
+        <input type="hidden" name="urgency" id="urgency_val">
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Property Address <span class="req">*</span></label>
+            <input type="text" name="listing_address" placeholder="123 Main St, City, VA 00000">
+          </div>
+          <div class="f">
+            <label>List Price <span class="req">*</span></label>
+            <input type="text" name="listing_price" placeholder="e.g. $425,000">
+          </div>
+          <div class="f">
+            <label>Beds / Baths</label>
+            <input type="text" name="listing_beds_baths" placeholder="e.g. 4 bed / 2.5 bath">
+          </div>
+          <div class="f">
+            <label>Square Footage</label>
+            <input type="text" name="listing_sqft" placeholder="e.g. 2,450 sq ft">
+          </div>
+          <div class="f">
+            <label>Go-Live / List Date</label>
+            <input type="date" name="listing_date">
+          </div>
+          <div class="f">
+            <label>MLS Number <span class="opt">(if available)</span></label>
+            <input type="text" name="listing_mls" placeholder="e.g. 10049823">
+          </div>
+          <div class="f span-2">
+            <label>MLS or Listing Link <span class="opt">(if live)</span></label>
+            <input type="url" name="listing_link" placeholder="https://...">
+          </div>
+          <div class="f span-2">
+            <label>Key Features &amp; Selling Points <span class="req">*</span></label>
+            <textarea name="listing_features" placeholder="Renovated kitchen, waterfront views, new roof, quiet cul-de-sac, walking distance to schools — anything that makes this property stand out..."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Target Buyer for This Property</label>
+            <input type="text" name="listing_buyer" placeholder="e.g. First-time buyer, military family, investor, downsizer">
+          </div>
+          <div class="f span-2">
+            <label>Photo / Media Link <span class="opt">(Google Drive, Dropbox, MLS photos, etc.)</span></label>
+            <input type="url" name="listing_photos" placeholder="https://drive.google.com/...">
+            <span class="hint">If photos aren't ready yet, leave blank and email them to hello@elevateops360.com with the address in the subject line.</span>
+          </div>
+          <div class="f span-2">
+            <label>Anything Else We Should Know</label>
+            <textarea name="listing_notes" style="min-height:80px;" placeholder="Special circumstances, price strategy notes, anything you want mentioned or avoided in the content..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ OPEN HOUSE ══ -->
+    <div class="form-panel" id="panel-openhouse">
+      <div class="card">
+        <h2 class="card-title">Open House Announcement</h2>
+        <p class="card-desc">Time-sensitive. Submit at least 48 hours before the event for best results. Day-of requests will be handled as fast as possible.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Property Address <span class="req">*</span></label>
+            <input type="text" name="oh_address" placeholder="123 Main St, City, VA 00000">
+          </div>
+          <div class="f">
+            <label>List Price</label>
+            <input type="text" name="oh_price" placeholder="e.g. $425,000">
+          </div>
+          <div class="f">
+            <label>Open House Date <span class="req">*</span></label>
+            <input type="date" name="oh_date">
+          </div>
+          <div class="f">
+            <label>Start &amp; End Time <span class="req">*</span></label>
+            <input type="text" name="oh_time" placeholder="e.g. 11:00 AM – 2:00 PM">
+          </div>
+          <div class="f">
+            <label>Beds / Baths</label>
+            <input type="text" name="oh_beds" placeholder="e.g. 3 bed / 2 bath">
+          </div>
+          <div class="f">
+            <label>Square Footage</label>
+            <input type="text" name="oh_sqft" placeholder="e.g. 1,850 sq ft">
+          </div>
+          <div class="f span-2">
+            <label>Top 3–5 Highlights for Promo Content</label>
+            <textarea name="oh_highlights" placeholder="Freshly staged, new flooring, amazing backyard, motivated seller..."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Photo / Media Link</label>
+            <input type="url" name="oh_photos" placeholder="https://drive.google.com/...">
+          </div>
+          <div class="f span-2">
+            <label>MLS or Listing Link <span class="opt">(if live)</span></label>
+            <input type="url" name="oh_link" placeholder="https://...">
+          </div>
+          <div class="f span-2">
+            <label>Any Special Details</label>
+            <textarea name="oh_notes" style="min-height:72px;" placeholder="Refreshments, giveaways, bring a friend promo, any offer incentives..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTENT REQUEST ══ -->
+    <div class="form-panel" id="panel-content">
+      <div class="card">
+        <h2 class="card-title">Content Request</h2>
+        <p class="card-desc">Need something specific that isn't in your regular content calendar? Tell us exactly what you're envisioning.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Content Type <span class="req">*</span></label>
+            <select name="content_type">
+              <option value="" disabled selected>What type of content?</option>
+              <option>Social media post (single image)</option>
+              <option>Social media carousel</option>
+              <option>Reel / video script</option>
+              <option>Caption only</option>
+              <option>Graphic / flyer</option>
+              <option>Story (Instagram / Facebook)</option>
+              <option>Blog post / article</option>
+              <option>Email / newsletter</option>
+              <option>Market update</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Which Platform(s)?</label>
+            <div class="pills" style="margin-top:4px;">
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="Instagram"> Instagram</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="Facebook"> Facebook</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="LinkedIn"> LinkedIn</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="Google Business"> GMB</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="TikTok"> TikTok</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="content_platform[]" value="All platforms"> All</label>
+            </div>
+          </div>
+          <div class="f">
+            <label>Priority</label>
+            <select name="content_priority">
+              <option value="" disabled selected>When do you need it?</option>
+              <option>ASAP — within 24 hours</option>
+              <option>2–3 days</option>
+              <option>This week</option>
+              <option>No rush — next available slot</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Specific Date to Post <span class="opt">(if applicable)</span></label>
+            <input type="date" name="content_post_date">
+          </div>
+          <div class="f span-2">
+            <label>What Do You Want This Content to Do? <span class="req">*</span></label>
+            <textarea name="content_goal" placeholder="Promote a listing, educate buyers, share a market stat, celebrate a milestone, drive open house traffic, announce a price reduction..."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Key Message or Talking Points</label>
+            <textarea name="content_points" placeholder="Key facts, stats, or specific language you want included. The more detail the better."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Reference, Inspo, or Example <span class="opt">(link or describe)</span></label>
+            <input type="text" name="content_ref" placeholder="Paste a link, describe a style, or name a post you liked">
+          </div>
+          <div class="f span-2">
+            <label>Photo / Asset Link <span class="opt">(if you're providing images)</span></label>
+            <input type="url" name="content_assets" placeholder="https://drive.google.com/...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CLIENT WIN ══ -->
+    <div class="form-panel" id="panel-win">
+      <div class="card">
+        <h2 class="card-title">Client Win ✦</h2>
+        <p class="card-desc">Closed a deal, got a glowing review, or helped a client through something tough? These are your best content moments. Let's tell that story.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Type of Win <span class="req">*</span></label>
+            <select name="win_type">
+              <option value="" disabled selected>What happened?</option>
+              <option>Closed a sale (listing)</option>
+              <option>Helped a buyer close</option>
+              <option>Multiple offer situation won</option>
+              <option>Under contract</option>
+              <option>Price reduction that led to offer</option>
+              <option>Client received a 5-star review</option>
+              <option>Helped a client avoid foreclosure</option>
+              <option>Credit-to-close milestone</option>
+              <option>First-time homebuyer success</option>
+              <option>Other milestone</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Sale Price or Milestone <span class="opt">(if you want to share)</span></label>
+            <input type="text" name="win_price" placeholder="e.g. Closed at $389,000 / 14 days on market">
+          </div>
+          <div class="f">
+            <label>City / Area <span class="opt">(no full address needed)</span></label>
+            <input type="text" name="win_location" placeholder="e.g. Hampton, VA or Chesapeake">
+          </div>
+          <div class="f">
+            <label>Client's First Name <span class="opt">(only if they approved sharing)</span></label>
+            <input type="text" name="win_client_name" placeholder="First name only, or leave blank for 'my clients'">
+          </div>
+          <div class="f span-2">
+            <label>Tell the Story <span class="req">*</span></label>
+            <textarea name="win_story" placeholder="What made this deal special? Was it competitive? Did they overcome obstacles? Did they wait months to get here? The human story behind the transaction makes the best content."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Client Testimonial or Quote <span class="opt">(if you have one)</span></label>
+            <textarea name="win_quote" style="min-height:80px;" placeholder="Paste their exact words if they left a review or said something memorable..."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Photo <span class="opt">(closing day, keys, house exterior — if client approved)</span></label>
+            <input type="url" name="win_photo" placeholder="https://drive.google.com/...">
+          </div>
+          <div class="f span-2">
+            <label>Anything Off-Limits in This Post?</label>
+            <input type="text" name="win_avoid" placeholder="e.g. Don't mention price, don't name the neighborhood, keep it vague">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BRAND UPDATE ══ -->
+    <div class="form-panel" id="panel-brand">
+      <div class="card">
+        <h2 class="card-title">Brand Update</h2>
+        <p class="card-desc">Something about your brand is changing. New photos, new logo, new bio, new direction. Tell us what's shifting and we'll update your AI team accordingly.</p>
+
+        <div class="fg fg-2">
+          <div class="f span-2">
+            <label>What's Changing? <span class="req">*</span></label>
+            <div class="pills">
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="New photos"> New photos</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="Updated logo"> Updated logo</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="Bio rewrite"> Bio rewrite</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="Brand colors"> Brand colors</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="Tone / voice shift"> Tone / voice shift</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="New tagline"> New tagline</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="New team name or brokerage"> New team / brokerage</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="brand_change[]" value="Content focus shift"> Content focus shift</label>
+            </div>
+          </div>
+          <div class="f span-2">
+            <label>Describe the Change <span class="req">*</span></label>
+            <textarea name="brand_description" placeholder="Walk us through what's new and why. The more context you give, the better we can recalibrate your AI team's voice and output."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>New Asset Link <span class="opt">(new photos, logo files, brand guide)</span></label>
+            <input type="url" name="brand_assets" placeholder="https://drive.google.com/...">
+            <span class="hint">PNG or SVG for logos. High-resolution JPG for photos. Transparent background preferred for logos.</span>
+          </div>
+          <div class="f span-2">
+            <label>New Bio <span class="opt">(paste here if you have a rewrite ready)</span></label>
+            <textarea name="brand_bio" style="min-height:100px;" placeholder="Paste your updated bio, or leave blank and describe what you want changed above — we'll handle the rewrite."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>New Tagline <span class="opt">(if applicable)</span></label>
+            <input type="text" name="brand_tagline" placeholder="Your updated slogan or brand statement">
+          </div>
+          <div class="f span-2">
+            <label>Effective Date <span class="opt">(when should this go live?)</span></label>
+            <input type="date" name="brand_effective_date">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ADD PLATFORM ══ -->
+    <div class="form-panel" id="panel-platform">
+      <div class="card">
+        <h2 class="card-title">Add a Platform</h2>
+        <p class="card-desc">Ready to expand to a new channel? We'll need your login credentials to set it up. This will follow the same secure handling as your original onboarding.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Platform to Add <span class="req">*</span></label>
+            <select name="new_platform">
+              <option value="" disabled selected>Which platform?</option>
+              <option>TikTok</option>
+              <option>YouTube</option>
+              <option>Twitter / X</option>
+              <option>Pinterest</option>
+              <option>Threads</option>
+              <option>Google Business Profile</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Your Handle / Username on That Platform</label>
+            <input type="text" name="new_platform_handle" placeholder="@yourhandle or channel name">
+          </div>
+          <div class="f">
+            <label>Profile URL</label>
+            <input type="url" name="new_platform_url" placeholder="https://...">
+          </div>
+          <div class="f">
+            <label>Login Email or Username</label>
+            <input type="text" name="new_platform_email" placeholder="Login email or username">
+          </div>
+          <div class="f span-2">
+            <label>Password</label>
+            <input type="password" name="new_platform_password" placeholder="••••••••••">
+            <span class="hint">Transmitted securely. Use an app-specific password if available.</span>
+          </div>
+          <div class="f span-2">
+            <label>Any 2FA or Special Access Notes</label>
+            <input type="text" name="new_platform_notes" placeholder="e.g. 2FA enabled, backup code, recovery email...">
+          </div>
+          <div class="f span-2">
+            <label>Account Status</label>
+            <select name="new_platform_status">
+              <option value="" disabled selected>Is the account already set up?</option>
+              <option>Yes — account exists, just needs content</option>
+              <option>Partially set up — needs profile optimization</option>
+              <option>Brand new — needs full setup</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ UPGRADE ══ -->
+    <div class="form-panel" id="panel-upgrade">
+      <div class="card">
+        <h2 class="card-title">Upgrade Your Package</h2>
+        <p class="card-desc">Ready to add more AI team members or move to the full system? Tell us what you're looking to add and we'll get it configured.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Current Package <span class="req">*</span></label>
+            <select name="upgrade_from">
+              <option value="" disabled selected>What are you on now?</option>
+              <option>Elevate Visibility — $25/mo (Beta)</option>
+              <option>Elevate AI Systems — $99/mo</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Upgrading To</label>
+            <select name="upgrade_to">
+              <option value="" disabled selected>What do you want?</option>
+              <option>Elevate AI Systems — $99/mo (full team)</option>
+              <option>Elevate AI Build — Custom</option>
+              <option>Add specific agents only</option>
+            </select>
+          </div>
+          <div class="f span-2">
+            <label>Specific Agents You Want to Add</label>
+            <div class="pills">
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="agents[]" value="Eva (inbox & calendar)"> Eva — Inbox &amp; Calendar</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="agents[]" value="Stan (lead gen & outreach)"> Stan — Lead Gen</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="agents[]" value="Rachel (phone receptionist)"> Rachel — Phone</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="agents[]" value="Cara (customer support)"> Cara — Support</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="agents[]" value="Linda (contract review)"> Linda — Legal</label>
+            </div>
+          </div>
+          <div class="f span-2">
+            <label>What's Driving the Upgrade?</label>
+            <textarea name="upgrade_reason" style="min-height:80px;" placeholder="What's the specific pain point or goal you're trying to address? Helps us configure everything the right way from day one."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ FEEDBACK ══ -->
+    <div class="form-panel" id="panel-feedback">
+      <div class="card">
+        <h2 class="card-title">Campaign Feedback</h2>
+        <p class="card-desc">Something isn't landing right. We want to know. Specific feedback is the fastest way to get your AI dialed in exactly to your voice.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>What's the Issue? <span class="req">*</span></label>
+            <select name="feedback_type">
+              <option value="" disabled selected>What needs to change?</option>
+              <option>Tone doesn't sound like me</option>
+              <option>Content feels too generic</option>
+              <option>Posting too frequently</option>
+              <option>Not posting frequently enough</option>
+              <option>Wrong type of content being posted</option>
+              <option>A specific post landed badly</option>
+              <option>Caption style needs adjustment</option>
+              <option>Hashtags are off</option>
+              <option>Images / graphics quality concern</option>
+              <option>Topic I want removed from rotation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Affected Platform(s)</label>
+            <div class="pills" style="margin-top:4px;">
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="feedback_platform[]" value="Instagram"> Instagram</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="feedback_platform[]" value="Facebook"> Facebook</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="feedback_platform[]" value="LinkedIn"> LinkedIn</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="feedback_platform[]" value="Google Business"> GMB</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="feedback_platform[]" value="All"> All</label>
+            </div>
+          </div>
+          <div class="f span-2">
+            <label>Describe the Problem — Be Specific <span class="req">*</span></label>
+            <textarea name="feedback_detail" placeholder="What exactly is off? If it's a specific post, describe it or paste the caption. If it's a tone issue, give us an example of what you'd rather sound like. Specific = faster fix."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>What Would 'Right' Look Like?</label>
+            <textarea name="feedback_ideal" style="min-height:80px;" placeholder="Describe the ideal version, paste an example post you love, or give us a direction to move in."></textarea>
+          </div>
+          <div class="f span-2">
+            <label>Any Posts or Content You've Loved Recently? <span class="opt">(yours or others)</span></label>
+            <input type="text" name="feedback_loved" placeholder="Links, handles, or descriptions of content that felt right to you">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PAUSE ══ -->
+    <div class="form-panel" id="panel-pause">
+      <div class="card">
+        <h2 class="card-title">Pause Campaign</h2>
+        <p class="card-desc">Life happens. We get it. Submit your pause request at least 24 hours before you need it to take effect. Everything resumes automatically on your set date.</p>
+
+        <div class="fg fg-2">
+          <div class="f">
+            <label>Pause Start Date <span class="req">*</span></label>
+            <input type="date" name="pause_start">
+          </div>
+          <div class="f">
+            <label>Resume Date <span class="req">*</span></label>
+            <input type="date" name="pause_end">
+            <span class="hint">Don't know yet? Enter your best estimate — you can always reach out to adjust.</span>
+          </div>
+          <div class="f">
+            <label>Pause Reason <span class="opt">(optional — helps us plan)</span></label>
+            <select name="pause_reason">
+              <option value="" disabled selected>Select if you'd like to share</option>
+              <option>Vacation / travel</option>
+              <option>Personal situation</option>
+              <option>Closing-heavy season — too busy</option>
+              <option>Brand refresh underway</option>
+              <option>Awaiting new photos / assets</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+          <div class="f">
+            <label>Platforms to Pause</label>
+            <div class="pills" style="margin-top:4px;">
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="pause_platforms[]" value="All platforms"> All platforms</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="pause_platforms[]" value="Instagram"> Instagram only</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="pause_platforms[]" value="Facebook"> Facebook only</label>
+              <label class="pill" onclick="togglePill(this)"><input type="checkbox" name="pause_platforms[]" value="LinkedIn"> LinkedIn only</label>
+            </div>
+          </div>
+          <div class="f span-2">
+            <label>Any Instructions for When You Resume?</label>
+            <textarea name="pause_resume_notes" style="min-height:80px;" placeholder="New content direction when you're back, upcoming listings to promote, anything you want queued up ahead of your return..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-area" id="submit-area" style="display:none;">
+      <span class="submit-note">We'll confirm receipt within a few hours.</span>
+      <button type="submit" class="btn-submit" id="submit-btn">Submit Request ✦</button>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-ring">✦</div>
+    <h2>Request received.</h2>
+    <p>We've got it. Expect a confirmation within a few hours and your request handled within the timeframe you selected. Your AI team is on it.</p>
+    <button class="another-btn" onclick="resetForm()">Submit Another Request</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span style="color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:14px;">Elevate Ops 360</span>
+  &nbsp;·&nbsp; Questions? Email <a href="mailto:hello@elevateops360.com" style="color:var(--text-dim); text-decoration:none;">hello@elevateops360.com</a>
+  &nbsp;·&nbsp; <a href="https://elevateops360.com" style="color:var(--text-dim); text-decoration:none;">elevateops360.com</a>
+</footer>
+
+<script>
+  let currentType = null;
+
+  const panels = {
+    listing: 'panel-listing',
+    openhouse: 'panel-openhouse',
+    content: 'panel-content',
+    win: 'panel-win',
+    brand: 'panel-brand',
+    platform: 'panel-platform',
+    upgrade: 'panel-upgrade',
+    feedback: 'panel-feedback',
+    pause: 'panel-pause'
+  };
+
+  const typeLabels = {
+    listing: 'New Listing Promotion',
+    openhouse: 'Open House Announcement',
+    content: 'Content Request',
+    win: 'Client Win',
+    brand: 'Brand Update',
+    platform: 'Add a Platform',
+    upgrade: 'Package Upgrade',
+    feedback: 'Campaign Feedback',
+    pause: 'Pause Campaign'
+  };
+
+  function selectType(tile, type) {
+    // Deselect all tiles
+    document.querySelectorAll('.request-tile').forEach(t => t.classList.remove('selected'));
+    tile.classList.add('selected');
+
+    // Hide all panels
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-default').style.display = 'none';
+
+    // Show selected panel
+    const panelId = panels[type];
+    if (panelId) {
+      const panel = document.getElementById(panelId);
+      panel.classList.add('active');
+    }
+
+    // Set hidden input
+    document.getElementById('request_type_input').value = typeLabels[type] || type;
+    currentType = type;
+
+    // Show submit
+    document.getElementById('submit-area').style.display = 'flex';
+
+    // Scroll to form
+    setTimeout(() => {
+      document.querySelector('.form-panel.active')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  function setUrgency(level, el) {
+    document.querySelectorAll('.urgency-opt').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('urgency_val').value = level;
+  }
+
+  function togglePill(el) {
+    el.classList.toggle('on');
+  }
+
+  // Form submission
+  document.getElementById('update-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Formspree submission — uncomment when ready:
+    /*
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) { showSuccess(); }
+      else {
+        btn.disabled = false;
+        btn.textContent = 'Submit Request ✦';
+        alert('Something went wrong. Please email hello@elevateops360.com directly.');
+      }
+    });
+    */
+
+    setTimeout(showSuccess, 1000);
+  });
+
+  function showSuccess() {
+    document.getElementById('update-form').style.display = 'none';
+    document.getElementById('submit-area').style.display = 'none';
+    const s = document.getElementById('success-screen');
+    s.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function resetForm() {
+    document.getElementById('update-form').reset();
+    document.getElementById('update-form').style.display = 'block';
+    document.getElementById('success-screen').classList.remove('visible');
+    document.querySelectorAll('.request-tile').forEach(t => t.classList.remove('selected'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-default').style.display = '';
+    document.getElementById('panel-default').classList.add('active');
+    document.getElementById('submit-area').style.display = 'none';
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+    document.querySelectorAll('.urgency-opt').forEach(o => o.classList.remove('active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    currentType = null;
+  }
+</script>
+</body>
+</html>

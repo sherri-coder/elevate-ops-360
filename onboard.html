@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Onboarding — Elevate Ops 360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D6B98C;
+    --gold-light: #e8d5b5;
+    --gold-dim: rgba(214,185,140,0.15);
+    --gold-border: rgba(214,185,140,0.25);
+    --cream: #FAF9F7;
+    --cream-dim: rgba(250,249,247,0.65);
+    --bg: #0d0c0b;
+    --bg2: #141210;
+    --bg3: #1a1714;
+    --surface: rgba(255,255,255,0.04);
+    --surface2: rgba(255,255,255,0.06);
+    --text: #e8e4de;
+    --text-dim: rgba(232,228,222,0.55);
+    --error: #e07070;
+    --success: #7ec8a0;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* BG TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(214,185,140,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 90% 90%, rgba(214,185,140,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ──── HEADER ──── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,12,11,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  .logo-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+
+  .header-badge {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ──── HERO SECTION ──── */
+  .onboard-hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 72px 24px 56px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold-border);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  /* ──── PROGRESS TRACKER ──── */
+  .progress-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+  }
+
+  .progress-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .progress-track::before {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: var(--gold-border);
+  }
+
+  .progress-fill {
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-border);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .progress-step.active .step-dot {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  .progress-step.done .step-dot {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  .step-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+
+  .progress-step.active .step-label,
+  .progress-step.done .step-label { color: var(--gold); }
+
+  /* ──── FORM CONTAINER ──── */
+  .form-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ──── FORM STEPS ──── */
+  .form-step {
+    display: none;
+    animation: stepIn 0.4s ease forwards;
+  }
+
+  .form-step.active { display: block; }
+
+  @keyframes stepIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ──── SECTION CARD ──── */
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--gold-border);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .section-number {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    line-height: 1.65;
+    max-width: 560px;
+  }
+
+  /* ──── FORM GRID ──── */
+  .form-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .form-grid-2 { grid-template-columns: 1fr 1fr; }
+  .form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+
+  /* ──── FIELD ──── */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .field label .req { color: var(--error); margin-left: 2px; }
+  .field label .opt { color: var(--text-dim); font-weight: 300; text-transform: none; letter-spacing: 0; font-size: 11px; }
+
+  .field input,
+  .field select,
+  .field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(214,185,140,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+    width: 100%;
+    appearance: none;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder { color: rgba(232,228,222,0.28); }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--gold);
+    background: rgba(214,185,140,0.07);
+  }
+
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D6B98C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .field select option { background: #1a1714; color: var(--cream); }
+
+  .field textarea { resize: vertical; min-height: 110px; }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ──── DIVIDER ──── */
+  .field-divider {
+    border: none;
+    border-top: 1px solid var(--gold-border);
+    margin: 8px 0;
+  }
+
+  /* ──── PLATFORM BLOCK ──── */
+  .platform-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .platform-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .platform-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .platform-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .pi-fb { background: rgba(24,119,242,0.2); }
+  .pi-ig { background: rgba(193,53,132,0.2); }
+  .pi-li { background: rgba(0,119,181,0.2); }
+  .pi-gmb { background: rgba(66,133,244,0.2); }
+  .pi-tw { background: rgba(0,0,0,0.3); }
+  .pi-tt { background: rgba(255,0,80,0.15); }
+  .pi-yt { background: rgba(255,0,0,0.15); }
+
+  /* ──── TOGGLE SWITCH ──── */
+  .toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .toggle {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .toggle input { opacity: 0; width: 0; height: 0; }
+
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 22px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid var(--gold-border);
+  }
+
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    top: 2px;
+    background: var(--text-dim);
+    border-radius: 50%;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .toggle input:checked + .toggle-slider { background: var(--gold-dim); border-color: var(--gold); }
+  .toggle input:checked + .toggle-slider::before { transform: translateX(20px); background: var(--gold); }
+
+  /* ──── CHECKBOX GROUP ──── */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .checkbox-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--gold-border);
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .checkbox-pill input { display: none; }
+
+  .checkbox-pill:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  .checkbox-pill.checked {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  .checkbox-pill.checked::before { content: '✦ '; font-size: 10px; }
+
+  /* ──── SECURITY NOTICE ──── */
+  .security-notice {
+    background: rgba(214,185,140,0.07);
+    border: 1px solid rgba(214,185,140,0.3);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .security-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .security-text {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .security-text strong { color: var(--gold); font-weight: 500; }
+
+  /* ──── WELCOME CARD ──── */
+  .welcome-card {
+    background: linear-gradient(135deg, rgba(214,185,140,0.1) 0%, rgba(214,185,140,0.03) 100%);
+    border: 1px solid rgba(214,185,140,0.3);
+    border-radius: 14px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .welcome-diamond {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .welcome-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .welcome-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    max-width: 500px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
+  /* ──── PACKAGE CARDS ──── */
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .package-card {
+    border: 1.5px solid var(--gold-border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    background: var(--surface);
+  }
+
+  .package-card:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+  .package-card.selected {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  .package-card.selected::after {
+    content: '✦';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .package-card input { display: none; }
+  .package-name { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+  .package-price { font-size: 22px; font-family: 'Cormorant Garamond', serif; color: var(--gold); margin-bottom: 8px; }
+  .package-features { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* ──── NAV BUTTONS ──── */
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg);
+    flex: 1;
+    max-width: 260px;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--gold-border);
+  }
+
+  .btn-ghost:hover { color: var(--cream); border-color: var(--gold); }
+
+  .btn-submit {
+    background: var(--gold);
+    color: var(--bg);
+    flex: 1;
+    max-width: 300px;
+    font-size: 14px;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(214,185,140,0.25); }
+
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .step-counter {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ──── SUCCESS STATE ──── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 80px 24px;
+    animation: stepIn 0.5s ease;
+  }
+
+  .success-screen.visible { display: block; }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 32px;
+    background: var(--gold-dim);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(214,185,140,0.3); }
+    50% { box-shadow: 0 0 0 16px rgba(214,185,140,0); }
+  }
+
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .success-sub {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .next-step {
+    background: var(--surface);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: left;
+  }
+
+  .ns-number { font-size: 28px; font-family: 'Cormorant Garamond', serif; color: var(--gold); opacity: 0.5; margin-bottom: 8px; }
+  .ns-label { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+  .ns-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ──── RESPONSIVE ──── */
+  @media (max-width: 680px) {
+    .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+    .col-span-2, .col-span-3 { grid-column: span 1; }
+    .package-grid { grid-template-columns: 1fr; }
+    .next-steps { grid-template-columns: 1fr; }
+    .section-card { padding: 24px 20px; }
+    .progress-track::before { display: none; }
+    .progress-fill { display: none; }
+    .step-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <div class="logo-mark">E°</div>
+    <span class="logo-text">Elevate Ops 360</span>
+  </div>
+  <div class="header-badge">Client Onboarding</div>
+</header>
+
+<!-- HERO -->
+<div class="onboard-hero">
+  <div class="hero-eyebrow">Welcome to Your AI Team</div>
+  <h1 class="hero-title">Let's build your<br><em>AI-powered backend.</em></h1>
+  <p class="hero-sub">This is where we gather everything we need to configure your AI team, lock in your brand voice, and get you running in days. Take your time. Your answers shape everything.</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrapper">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+    <div class="progress-step active" data-step="0">
+      <div class="step-dot">1</div>
+      <span class="step-label">Package</span>
+    </div>
+    <div class="progress-step" data-step="1">
+      <div class="step-dot">2</div>
+      <span class="step-label">Contact</span>
+    </div>
+    <div class="progress-step" data-step="2">
+      <div class="step-dot">3</div>
+      <span class="step-label">Business</span>
+    </div>
+    <div class="progress-step" data-step="3">
+      <div class="step-dot">4</div>
+      <span class="step-label">Brand Voice</span>
+    </div>
+    <div class="progress-step" data-step="4">
+      <div class="step-dot">5</div>
+      <span class="step-label">Social Media</span>
+    </div>
+    <div class="progress-step" data-step="5">
+      <div class="step-dot">6</div>
+      <span class="step-label">Brand Assets</span>
+    </div>
+    <div class="progress-step" data-step="6">
+      <div class="step-dot">7</div>
+      <span class="step-label">Final Details</span>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrapper">
+  <form id="onboard-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+    <!-- ══════════ STEP 1: PACKAGE ══════════ -->
+    <div class="form-step active" data-step="0">
+      <div class="welcome-card">
+        <div class="welcome-diamond">◈</div>
+        <h2 class="welcome-title">You made a great decision.</h2>
+        <p class="welcome-desc">Your AI team is about to change everything. This form takes about 15–20 minutes to complete. The more detail you give us, the better your AI sounds like you from day one.</p>
+        <div class="time-badge">⏱ Estimated time: 15–20 minutes</div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-number">Step 01 of 07</div>
+        <h2 class="section-title">Which package are you on?</h2>
+        <p class="section-desc">Select the service level you signed up for. This helps us know which AI team members to configure for you.</p>
+
+        <div class="package-grid">
+          <label class="package-card" onclick="selectPackage(this, 'visibility')">
+            <input type="radio" name="package" value="visibility">
+            <div class="package-name">Elevate Visibility</div>
+            <div class="package-price">$25<span style="font-size:14px; color:var(--text-dim)">/mo</span> <span style="font-size:13px; color:var(--text-dim); text-decoration:line-through; font-family:'DM Sans',sans-serif;">$49</span></div>
+            <div class="package-features">Sonny + Penny<br>Social media & SEO blog<br>Brand voice calibration<br><span style="color:var(--gold); font-size:11px;">✦ Beta pricing</span></div>
+          </label>
+          <label class="package-card" onclick="selectPackage(this, 'systems')">
+            <input type="radio" name="package" value="systems">
+            <div class="package-name">Elevate AI Systems</div>
+            <div class="package-price">$99<span style="font-size:14px; color:var(--text-dim)">/mo</span></div>
+            <div class="package-features">Full 6-agent AI team<br>Visibility + Eva, Stan,<br>Rachel, Cara, Linda</div>
+          </label>
+          <label class="package-card" onclick="selectPackage(this, 'custom')">
+            <input type="radio" name="package" value="custom">
+            <div class="package-name">Elevate AI Build</div>
+            <div class="package-price" style="font-size:18px">Custom</div>
+            <div class="package-features">Custom AI infrastructure<br>Tailored automation<br>Strategy + build</div>
+          </label>
+        </div>
+
+        <div class="form-grid form-grid-2" style="margin-top:16px;">
+          <div class="field">
+            <label>How did you hear about us? <span class="opt">(optional)</span></label>
+            <select name="referral_source">
+              <option value="" disabled selected>Select one</option>
+              <option>Referred by another agent</option>
+              <option>Social media (Instagram)</option>
+              <option>Social media (Facebook)</option>
+              <option>Social media (LinkedIn)</option>
+              <option>Google search</option>
+              <option>Podcast or interview</option>
+              <option>Sherri Parsons / Parsons Team</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Referral name <span class="opt">(if applicable)</span></label>
+            <input type="text" name="referral_name" placeholder="Who referred you?">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <span class="step-counter">Step 1 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 2: CONTACT INFO ══════════ -->
+    <div class="form-step" data-step="1">
+      <div class="section-card">
+        <div class="section-number">Step 02 of 07</div>
+        <h2 class="section-title">Contact &amp; professional info</h2>
+        <p class="section-desc">The basics. This is how we identify your account, configure your systems, and reach you when we need a quick answer.</p>
+
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="field">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" name="last_name" placeholder="Your last name" required>
+          </div>
+          <div class="field">
+            <label>Business / Team Name <span class="opt">(if applicable)</span></label>
+            <input type="text" name="team_name" placeholder="e.g. The Johnson Group">
+          </div>
+          <div class="field">
+            <label>Brokerage Name <span class="req">*</span></label>
+            <input type="text" name="brokerage" placeholder="e.g. 1st Class Real Estate" required>
+          </div>
+          <div class="field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="(757) 555-0100" required>
+          </div>
+          <div class="field">
+            <label>Business Website <span class="opt">(if you have one)</span></label>
+            <input type="url" name="website" placeholder="https://yoursite.com">
+          </div>
+          <div class="field">
+            <label>Market / Service Area <span class="req">*</span></label>
+            <input type="text" name="market_area" placeholder="e.g. Hampton Roads, Virginia Beach" required>
+          </div>
+          <div class="field">
+            <label>Real Estate License #</label>
+            <input type="text" name="license_number" placeholder="e.g. 0226012345">
+          </div>
+          <div class="field">
+            <label>State Licensed In <span class="req">*</span></label>
+            <input type="text" name="license_state" placeholder="e.g. Virginia, NC" required>
+          </div>
+          <div class="field col-span-2">
+            <label>MLS Membership(s)</label>
+            <input type="text" name="mls" placeholder="e.g. REIN, CVRMLS — include your MLS ID if possible">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 2 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 3: BUSINESS DETAILS ══════════ -->
+    <div class="form-step" data-step="2">
+      <div class="section-card">
+        <div class="section-number">Step 03 of 07</div>
+        <h2 class="section-title">About your business</h2>
+        <p class="section-desc">Your AI team needs to understand who you serve, what you do, and how your business is positioned. This shapes every piece of content and every interaction.</p>
+
+        <div class="form-grid">
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label>Years in Real Estate <span class="req">*</span></label>
+              <select name="years_experience" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5–10 years</option>
+                <option>10–20 years</option>
+                <option>20+ years</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Annual Transaction Volume</label>
+              <select name="transaction_volume">
+                <option value="" disabled selected>Approx. how many deals/year?</option>
+                <option>1–5 transactions</option>
+                <option>6–15 transactions</option>
+                <option>16–30 transactions</option>
+                <option>31–50 transactions</option>
+                <option>51–100 transactions</option>
+                <option>100+ transactions</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label>Average Price Point</label>
+              <select name="avg_price">
+                <option value="" disabled selected>Typical sales price</option>
+                <option>Under $150K</option>
+                <option>$150K–$300K</option>
+                <option>$300K–$500K</option>
+                <option>$500K–$750K</option>
+                <option>$750K–$1M</option>
+                <option>$1M+</option>
+                <option>Varies widely</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Primary Role</label>
+              <select name="primary_role">
+                <option value="" disabled selected>Select your primary focus</option>
+                <option>Buyers Agent</option>
+                <option>Listing Agent</option>
+                <option>Both (Buyer + Seller)</option>
+                <option>Team Leader</option>
+                <option>Investment Specialist</option>
+                <option>Property Manager</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Specialties <span class="opt">(check all that apply)</span></label>
+            <div class="checkbox-group" id="specialties-group">
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="First-Time Buyers"> First-Time Buyers</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Move-Up Buyers"> Move-Up Buyers</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Luxury"> Luxury</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="New Construction"> New Construction</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Investment Properties"> Investment Properties</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Pre-Foreclosure / Short Sale"> Pre-Foreclosure / Short Sale</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Military / VA Loans"> Military / VA Loans</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Relocations"> Relocations</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Downsizing"> Downsizing</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Multi-Family"> Multi-Family</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Land / Lots"> Land / Lots</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="specialty[]" value="Commercial"> Commercial</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Target Client — Describe in your own words <span class="req">*</span></label>
+            <textarea name="ideal_client" placeholder="Who is your dream client? What do they look like, what are they dealing with, what do they need from you?" required></textarea>
+          </div>
+
+          <div class="field">
+            <label>Your Biggest Current Challenge</label>
+            <textarea name="current_challenge" placeholder="What's the #1 thing your AI team can help you fix right now? More visibility, more consistency, lead follow-up, time..."></textarea>
+          </div>
+
+          <div class="field">
+            <label>CRM or Lead Management System</label>
+            <select name="crm">
+              <option value="" disabled selected>Which CRM are you using?</option>
+              <option>Follow Up Boss</option>
+              <option>KVCore / BoldTrail</option>
+              <option>Lofty (Chime)</option>
+              <option>Top Producer</option>
+              <option>Wise Agent</option>
+              <option>HubSpot</option>
+              <option>Salesforce</option>
+              <option>None / Spreadsheets</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 3 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 4: BRAND VOICE ══════════ -->
+    <div class="form-step" data-step="3">
+      <div class="section-card">
+        <div class="section-number">Step 04 of 07</div>
+        <h2 class="section-title">Your brand voice &amp; story</h2>
+        <p class="section-desc">This is the most important section. The more honest and specific you are here, the more your AI will sound like you — not like a robot trying to be you.</p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Your Professional Bio <span class="req">*</span></label>
+            <textarea name="bio" style="min-height:140px;" placeholder="Share your bio in any form — a few bullet points, a paragraph, however it comes out. Don't overthink it. We'll shape it into your brand voice." required></textarea>
+            <span class="field-hint">Include: years of experience, what you specialize in, who you love working with, and anything that makes your story unique.</span>
+          </div>
+
+          <div class="field">
+            <label>What Makes You Different? <span class="req">*</span></label>
+            <textarea name="differentiator" placeholder="If a client chose between you and five other agents, why would they pick you? What do you do that others don't?" required></textarea>
+          </div>
+
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label>Your Tagline or Slogan <span class="opt">(if you have one)</span></label>
+              <input type="text" name="tagline" placeholder="e.g. 'Where Expertise Meets Integrity'">
+            </div>
+            <div class="field">
+              <label>3 Words That Describe Your Brand</label>
+              <input type="text" name="brand_words" placeholder="e.g. Expert, Approachable, Results-Driven">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Brand Tone <span class="opt">(select all that feel right)</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Professional & polished"> Professional &amp; polished</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Warm & personal"> Warm &amp; personal</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Educational & informative"> Educational &amp; informative</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Bold & confident"> Bold &amp; confident</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Conversational & real"> Conversational &amp; real</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Witty & fun"> Witty &amp; fun</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Motivational & inspiring"> Motivational &amp; inspiring</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="tone[]" value="Data-driven & analytical"> Data-driven &amp; analytical</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Content Themes You Want More Of <span class="opt">(select all that apply)</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Market updates & stats"> Market updates &amp; stats</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Listings & property features"> Listings &amp; features</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Community spotlight"> Community spotlight</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Home buying tips"> Home buying tips</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Seller tips & home prep"> Seller tips</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Investment & wealth building"> Investment &amp; wealth</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Behind the scenes / personal"> Behind the scenes</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Client wins & testimonials"> Client wins</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Faith & values"> Faith &amp; values</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="content[]" value="Motivational / mindset"> Motivational / mindset</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Topics or Content to AVOID</label>
+            <textarea name="avoid_topics" placeholder="Anything off-limits? Politics, personal family details, certain competitors, controversial topics..."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Sample Post or Caption <span class="opt">(optional but incredibly helpful)</span></label>
+            <textarea name="sample_post" placeholder="Paste a caption, email, or anything you've written that sounds the most like 'you.' This helps us match your voice faster."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 4 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 5: SOCIAL MEDIA ══════════ -->
+    <div class="form-step" data-step="4">
+      <div class="section-card">
+        <div class="section-number">Step 05 of 07</div>
+        <h2 class="section-title">Social media accounts</h2>
+        <p class="section-desc">Toggle on the platforms you want your AI team to manage. We need your profile link and login credentials to connect and start publishing on your behalf.</p>
+
+        <div class="security-notice">
+          <span class="security-icon">🔒</span>
+          <div class="security-text">
+            <strong>Your credentials are handled with care.</strong> This form is transmitted over a secure HTTPS connection. We recommend using app-specific passwords where available (Facebook, Google) rather than your primary login password. You may also share credentials directly via your onboarding call if preferred. We will never share your login information with third parties.
+          </div>
+        </div>
+
+        <!-- FACEBOOK -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-fb">f</div>
+              Facebook Business Page
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="fb_active" onchange="togglePlatform('fb-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="fb-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>Facebook Page URL</label>
+                <input type="url" name="fb_url" placeholder="https://facebook.com/yourpage">
+              </div>
+              <div class="field">
+                <label>Personal Profile URL <span class="opt">(used for login)</span></label>
+                <input type="url" name="fb_profile_url" placeholder="https://facebook.com/yourname">
+              </div>
+              <div class="field">
+                <label>Login Email</label>
+                <input type="email" name="fb_email" placeholder="email used to log in">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="fb_password" placeholder="••••••••••">
+              </div>
+              <div class="field col-span-2">
+                <label>Additional Notes <span class="opt">(2FA, page admin email, etc.)</span></label>
+                <input type="text" name="fb_notes" placeholder="e.g. 2FA is enabled, backup code is...">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-ig">◉</div>
+              Instagram
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="ig_active" onchange="togglePlatform('ig-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="ig-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>Instagram Handle</label>
+                <input type="text" name="ig_handle" placeholder="@yourhandle">
+              </div>
+              <div class="field">
+                <label>Profile URL</label>
+                <input type="url" name="ig_url" placeholder="https://instagram.com/yourhandle">
+              </div>
+              <div class="field">
+                <label>Login Email / Username</label>
+                <input type="text" name="ig_email" placeholder="email or username">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="ig_password" placeholder="••••••••••">
+              </div>
+              <div class="field">
+                <label>Account Type</label>
+                <select name="ig_type">
+                  <option>Business Account</option>
+                  <option>Creator Account</option>
+                  <option>Personal (converting to Business)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Current Follower Count <span class="opt">(approx.)</span></label>
+                <input type="text" name="ig_followers" placeholder="e.g. 1,200">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINKEDIN -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-li">in</div>
+              LinkedIn
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="li_active" onchange="togglePlatform('li-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="li-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>LinkedIn Profile URL</label>
+                <input type="url" name="li_url" placeholder="https://linkedin.com/in/yourname">
+              </div>
+              <div class="field">
+                <label>Company Page URL <span class="opt">(if applicable)</span></label>
+                <input type="url" name="li_company_url" placeholder="https://linkedin.com/company/...">
+              </div>
+              <div class="field">
+                <label>Login Email</label>
+                <input type="email" name="li_email" placeholder="email used to log in">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="li_password" placeholder="••••••••••">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GOOGLE BUSINESS -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-gmb">G</div>
+              Google Business Profile
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="gmb_active" onchange="togglePlatform('gmb-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="gmb-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>Business Profile URL</label>
+                <input type="url" name="gmb_url" placeholder="Your Google Business Profile link">
+              </div>
+              <div class="field">
+                <label>Google Account Email</label>
+                <input type="email" name="gmb_email" placeholder="Gmail used to manage the profile">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="gmb_password" placeholder="••••••••••">
+              </div>
+              <div class="field">
+                <label>Profile Claimed? <span class="opt">(have you verified it?)</span></label>
+                <select name="gmb_claimed">
+                  <option>Yes, it's claimed and verified</option>
+                  <option>No, I need help claiming it</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWITTER/X -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-tw">𝕏</div>
+              Twitter / X
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="tw_active" onchange="togglePlatform('tw-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="tw-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>Twitter/X Handle</label>
+                <input type="text" name="tw_handle" placeholder="@yourhandle">
+              </div>
+              <div class="field">
+                <label>Profile URL</label>
+                <input type="url" name="tw_url" placeholder="https://x.com/yourhandle">
+              </div>
+              <div class="field">
+                <label>Login Email / Phone</label>
+                <input type="text" name="tw_email" placeholder="email or phone number">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="tw_password" placeholder="••••••••••">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIKTOK -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-tt">♪</div>
+              TikTok
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="tt_active" onchange="togglePlatform('tt-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="tt-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>TikTok Username</label>
+                <input type="text" name="tt_handle" placeholder="@yourhandle">
+              </div>
+              <div class="field">
+                <label>Profile URL</label>
+                <input type="url" name="tt_url" placeholder="https://tiktok.com/@yourhandle">
+              </div>
+              <div class="field">
+                <label>Login Email / Phone</label>
+                <input type="text" name="tt_email" placeholder="email or phone number">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="tt_password" placeholder="••••••••••">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YOUTUBE -->
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-name">
+              <div class="platform-icon pi-yt">▶</div>
+              YouTube
+            </div>
+            <label class="toggle-wrap">
+              <span>Active on this platform</span>
+              <label class="toggle">
+                <input type="checkbox" name="yt_active" onchange="togglePlatform('yt-fields', this)">
+                <span class="toggle-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div id="yt-fields" style="display:none;">
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label>Channel Name</label>
+                <input type="text" name="yt_channel" placeholder="Your YouTube channel name">
+              </div>
+              <div class="field">
+                <label>Channel URL</label>
+                <input type="url" name="yt_url" placeholder="https://youtube.com/@yourchannel">
+              </div>
+              <div class="field">
+                <label>Login Gmail</label>
+                <input type="email" name="yt_email" placeholder="Gmail used to manage channel">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="yt_password" placeholder="••••••••••">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 16px;">
+          <label>Existing Hashtags You Use <span class="opt">(optional)</span></label>
+          <input type="text" name="hashtags" placeholder="#hamptonroads #realestate #firsttimebuyer — list any you want us to keep using">
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 5 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 6: BRAND ASSETS ══════════ -->
+    <div class="form-step" data-step="5">
+      <div class="section-card">
+        <div class="section-number">Step 06 of 07</div>
+        <h2 class="section-title">Brand assets &amp; design</h2>
+        <p class="section-desc">Your visual identity. We need your colors, fonts, and photos so every piece of content we create looks unmistakably yours.</p>
+
+        <div class="form-grid">
+
+          <!-- PHOTO REQUIREMENTS CALLOUT -->
+          <div style="background: rgba(214,185,140,0.07); border: 1px solid rgba(214,185,140,0.35); border-radius: 12px; padding: 28px 28px 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity:0.5;"></div>
+            <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">📸 Photo Requirements — Action Required</div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--cream); margin-bottom:10px;">We need 10 photos of you.</h3>
+            <p style="font-size:13.5px; color:var(--text-dim); line-height:1.7; margin-bottom:20px;">These photos are the foundation of your entire content presence. Your AI content team will use them across social posts, graphics, and brand materials. Please send them to <a href="mailto:hello@elevateops360.com" style="color:var(--gold); text-decoration:none; font-weight:500;">hello@elevateops360.com</a> with your name in the subject line.</p>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+              <div style="background:rgba(0,0,0,0.2); border:1px solid var(--gold-border); border-radius:8px; padding:16px;">
+                <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">✦ What We Need</div>
+                <ul style="list-style:none; font-size:13px; color:var(--text-dim); line-height:1.9;">
+                  <li>✓ &nbsp;Full body shots — head to toe</li>
+                  <li>✓ &nbsp;Multiple angles (front, side, 3/4 turn)</li>
+                  <li>✓ &nbsp;Some with makeup, some without</li>
+                  <li>✓ &nbsp;Both casual and professional looks</li>
+                  <li>✓ &nbsp;Variety of outfits / settings if possible</li>
+                  <li>✓ &nbsp;Natural lighting preferred</li>
+                </ul>
+              </div>
+              <div style="background:rgba(0,0,0,0.2); border:1px solid var(--gold-border); border-radius:8px; padding:16px;">
+                <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--error); margin-bottom:10px;">✕ What to Avoid</div>
+                <ul style="list-style:none; font-size:13px; color:var(--text-dim); line-height:1.9;">
+                  <li>✕ &nbsp;No filters or heavy edits</li>
+                  <li>✕ &nbsp;No heavy Snapchat / Instagram effects</li>
+                  <li>✕ &nbsp;No group photos</li>
+                  <li>✕ &nbsp;No blurry or low-resolution images</li>
+                  <li>✕ &nbsp;No screenshots of photos</li>
+                  <li>✕ &nbsp;No heavy text overlays on the image</li>
+                </ul>
+              </div>
+            </div>
+
+            <div style="background:rgba(214,185,140,0.1); border-radius:8px; padding:14px 18px; display:flex; align-items:center; gap:12px;">
+              <span style="font-size:20px;">✉</span>
+              <div>
+                <div style="font-size:12px; font-weight:500; color:var(--cream); margin-bottom:2px;">Send your photos to:</div>
+                <a href="mailto:hello@elevateops360.com?subject=Brand Photos — [Your Name]" style="font-size:15px; color:var(--gold); text-decoration:none; font-family:'Cormorant Garamond',serif; letter-spacing:0.03em;">hello@elevateops360.com</a>
+                <div style="font-size:11px; color:var(--text-dim); margin-top:2px;">Subject line: <em>Brand Photos — [Your Name]</em></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LOGO CALLOUT -->
+          <div style="background: rgba(214,185,140,0.05); border: 1px solid rgba(214,185,140,0.25); border-radius: 12px; padding: 24px 28px;">
+            <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">🎨 Logo &amp; Brand Files — If You Have Them</div>
+            <p style="font-size:13.5px; color:var(--text-dim); line-height:1.7; margin-bottom:16px;">If you have a logo you'd like us to use, send it in the same email as your photos. Don't have one yet? No problem — we'll work with what you have or use your name and brokerage branding.</p>
+            <ul style="list-style:none; font-size:13px; color:var(--text-dim); line-height:1.9;">
+              <li>✓ &nbsp;PNG or SVG format preferred (transparent background if possible)</li>
+              <li>✓ &nbsp;Any alternate versions (dark background, light background, icon only)</li>
+              <li>✓ &nbsp;Brokerage logo if you're required to co-brand</li>
+            </ul>
+          </div>
+
+          <!-- BRAND COLORS + FONTS -->
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label>Primary Brand Color <span class="opt">(hex or describe)</span></label>
+              <input type="text" name="brand_color_primary" placeholder="e.g. #2B4C7E or 'navy blue'">
+            </div>
+            <div class="field">
+              <label>Secondary Brand Color</label>
+              <input type="text" name="brand_color_secondary" placeholder="e.g. #D4AF37 or 'champagne gold'">
+            </div>
+            <div class="field">
+              <label>Accent / Third Color <span class="opt">(if applicable)</span></label>
+              <input type="text" name="brand_color_accent" placeholder="e.g. #FFFFFF or 'crisp white'">
+            </div>
+            <div class="field">
+              <label>Brand Font(s) <span class="opt">(if known)</span></label>
+              <input type="text" name="brand_fonts" placeholder="e.g. Playfair Display, Lato">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Canva Account Email <span class="opt">(if you use Canva)</span></label>
+            <input type="email" name="canva_email" placeholder="Email linked to your Canva account — we'll request access">
+          </div>
+
+          <div class="field">
+            <label>Existing Brand Guide or Style Standards? <span class="opt">(if you have one)</span></label>
+            <input type="text" name="style_guide" placeholder="Link to your brand guide, or describe your existing standards">
+          </div>
+
+          <div class="field">
+            <label>Any Agents or Brands You Admire? <span class="opt">(for reference only)</span></label>
+            <textarea name="competitors" placeholder="Instagram handles, websites, or names. This helps us understand the aesthetic you're drawn to — not copying, just calibrating."></textarea>
+          </div>
+
+          <!-- PHOTO CONFIRMATION CHECKBOX -->
+          <div class="field">
+            <label style="display:flex; align-items:flex-start; gap:12px; text-transform:none; letter-spacing:0; font-size:13px; color:var(--text-dim); font-weight:400; cursor:pointer;">
+              <input type="checkbox" name="photos_confirmed" style="width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold);">
+              <span>I understand I need to email 10 photos (full body, no filter, varied angles, with and without makeup) plus my logo to <strong style="color:var(--gold);">hello@elevateops360.com</strong> before my AI team can go live.</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 6 of 7</span>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════ STEP 7: FINAL DETAILS ══════════ -->
+    <div class="form-step" data-step="6">
+      <div class="section-card">
+        <div class="section-number">Step 07 of 07</div>
+        <h2 class="section-title">Final details &amp; launch preferences</h2>
+        <p class="section-desc">Almost done. Just a few last things to make sure your launch goes exactly the way you want it.</p>
+
+        <div class="form-grid">
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label>Preferred Content Start Date</label>
+              <input type="date" name="start_date">
+              <span class="field-hint">We typically go live within 3–5 days of completing onboarding. If you have a hard deadline, let us know.</span>
+            </div>
+            <div class="field">
+              <label>Preferred Posting Frequency</label>
+              <select name="post_frequency">
+                <option value="" disabled selected>How often?</option>
+                <option>Daily (7x/week)</option>
+                <option>5–6 times per week</option>
+                <option>3–4 times per week</option>
+                <option>1–2 times per week</option>
+                <option>Let you decide — whatever works best</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Content Approval Preference</label>
+            <select name="approval_style">
+              <option value="" disabled selected>How do you want to handle approvals?</option>
+              <option>Auto-approve — post everything without my review</option>
+              <option>Weekly review — send me a batch to approve each week</option>
+              <option>Approve everything before it posts</option>
+              <option>Start with review, switch to auto-approve after 30 days</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Best Way to Reach You During Onboarding</label>
+            <div class="checkbox-group">
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="contact_pref[]" value="Email"> Email</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="contact_pref[]" value="Text message"> Text message</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="contact_pref[]" value="Phone call"> Phone call</label>
+              <label class="checkbox-pill" onclick="togglePill(this)"><input type="checkbox" name="contact_pref[]" value="Zoom or video call"> Zoom / video call</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Best Days / Times to Reach You</label>
+            <input type="text" name="availability" placeholder="e.g. Weekdays after 5pm, Tuesdays and Thursdays 2–4pm, weekends only">
+          </div>
+
+          <div class="field">
+            <label>Upcoming Listings, Open Houses, or Events We Should Know About</label>
+            <textarea name="upcoming_events" placeholder="Any new listings going live, open houses scheduled, or upcoming milestones? The more lead time you give us, the better we can support them."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Google Drive Link to Share Files <span class="opt">(logos, photos, documents)</span></label>
+            <input type="url" name="drive_link" placeholder="https://drive.google.com/drive/folders/...">
+          </div>
+
+          <div class="field">
+            <label>Is there anything else we need to know?</label>
+            <textarea name="additional_notes" placeholder="Anything that didn't fit anywhere else. Business changes coming, personal style notes, pet peeves about how you've been marketed before, non-negotiables..."></textarea>
+          </div>
+
+          <div class="field">
+            <label style="display:flex; align-items:flex-start; gap:12px; text-transform:none; letter-spacing:0; font-size:13px; color:var(--text-dim); font-weight:400; cursor:pointer;">
+              <input type="checkbox" name="consent" required style="width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold);">
+              <span>I confirm that the information I've provided is accurate and that I authorize Elevate Ops 360 to access and publish on the social media accounts listed above on my behalf. <span style="color:var(--error);">*</span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+        <span class="step-counter">Step 7 of 7</span>
+        <button type="submit" class="btn btn-submit">Submit &amp; Launch My AI Team ✦</button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS STATE -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">✦</div>
+    <h2 class="success-title">You're officially in the system.</h2>
+    <p class="success-sub">Your onboarding is complete. Our team is reviewing your information now and your AI team will be live within 3–5 business days. Watch your inbox for next steps.</p>
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="ns-number">01</div>
+        <div class="ns-label">Check your email</div>
+        <div class="ns-desc">You'll receive a confirmation and onboarding call scheduling link within 24 hours.</div>
+      </div>
+      <div class="next-step">
+        <div class="ns-number">02</div>
+        <div class="ns-label">Onboarding call</div>
+        <div class="ns-desc">We'll connect to finalize your brand voice calibration and answer any questions before launch.</div>
+      </div>
+      <div class="next-step">
+        <div class="ns-number">03</div>
+        <div class="ns-label">Go live</div>
+        <div class="ns-desc">Your AI team deploys within 3–5 business days. Content goes out. Systems run. You breathe.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid var(--gold-border); padding: 28px 32px; text-align: center; font-size: 12px; color: var(--text-dim); position: relative; z-index: 1;">
+  <span style="color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 14px;">Elevate Ops 360</span>
+  &nbsp;·&nbsp; AI-Powered Business Operations
+  &nbsp;·&nbsp; <a href="https://elevateops360.com" style="color: var(--text-dim); text-decoration: none;">elevateops360.com</a>
+  &nbsp;·&nbsp; <a href="mailto:hello@elevateops360.com" style="color: var(--text-dim); text-decoration: none;">hello@elevateops360.com</a>
+</footer>
+
+<script>
+  let currentStep = 0;
+  const totalSteps = 7;
+
+  function updateProgress() {
+    const steps = document.querySelectorAll('.progress-step');
+    const fill = document.getElementById('progress-fill');
+    const fillPct = currentStep / (totalSteps - 1) * 100;
+    
+    steps.forEach((s, i) => {
+      s.classList.remove('active', 'done');
+      if (i < currentStep) s.classList.add('done');
+      else if (i === currentStep) s.classList.add('active');
+    });
+
+    // Update check marks for done steps
+    steps.forEach((s, i) => {
+      const dot = s.querySelector('.step-dot');
+      if (i < currentStep) {
+        dot.innerHTML = '✓';
+      } else {
+        dot.innerHTML = i + 1;
+      }
+    });
+
+    fill.style.width = `calc(${fillPct}% - 0px)`;
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.form-step')[n].classList.add('active');
+    currentStep = n;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextStep() {
+    if (currentStep < totalSteps - 1) {
+      showStep(currentStep + 1);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      showStep(currentStep - 1);
+    }
+  }
+
+  function selectPackage(el, value) {
+    document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function togglePill(el) {
+    el.classList.toggle('checked');
+  }
+
+  function togglePlatform(id, checkbox) {
+    const fields = document.getElementById(id);
+    if (fields) {
+      fields.style.display = checkbox.checked ? 'block' : 'none';
+      if (checkbox.checked) {
+        fields.style.animation = 'stepIn 0.3s ease';
+      }
+    }
+  }
+
+  // Handle form submission
+  document.getElementById('onboard-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btn = this.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    // For actual Formspree integration, uncomment and configure:
+    /*
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        showSuccess();
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit & Launch My AI Team ✦';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    });
+    */
+
+    // Demo: show success immediately
+    setTimeout(showSuccess, 1200);
+  });
+
+  function showSuccess() {
+    document.getElementById('onboard-form').style.display = 'none';
+    document.querySelector('.progress-wrapper').style.display = 'none';
+    document.querySelector('.onboard-hero').style.display = 'none';
+    
+    const success = document.getElementById('success-screen');
+    success.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Initialize
+  updateProgress();
+</script>
+</body>
+</html>
