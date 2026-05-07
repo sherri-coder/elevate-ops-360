@@ -1546,9 +1546,11 @@
 
           <!-- PHOTO CONFIRMATION CHECKBOX -->
           <div class="field">
-            <div style="display:flex; align-items:flex-start; gap:12px;">
-              <input type="checkbox" name="photos_confirmed" id="photos_cb" style="width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold); cursor:pointer;">
-              <label for="photos_cb" style="font-size:13px; color:var(--text-dim); font-weight:400; cursor:pointer; line-height:1.6;">I understand I need to email 10 photos (full body, no filter, varied angles, with and without makeup) plus my logo to <strong style="color:var(--gold);">hello@elevateops360.com</strong> before my AI team can go live.</label>
+            <input type="checkbox" name="photos_confirmed" id="photos_cb" style="display:none;">
+            <div id="photos_toggle" onclick="toggleConsent('photos_cb', 'photos_toggle')" style="display:flex; align-items:flex-start; gap:14px; background:rgba(255,255,255,0.03); border:1.5px solid rgba(214,185,140,0.22); border-radius:8px; padding:16px; cursor:pointer; transition: border-color 0.2s, background 0.2s;">
+              <div id="photos_box" style="width:20px; height:20px; flex-shrink:0; border:1.5px solid rgba(214,185,140,0.4); border-radius:4px; margin-top:1px; display:flex; align-items:center; justify-content:center; transition: all 0.2s; background: transparent;">
+              </div>
+              <span style="font-size:13px; color:var(--text-dim); font-weight:400; line-height:1.6;">I understand I need to email 10 photos (full body, no filter, varied angles, with and without makeup) plus my logo to <strong style="color:var(--gold);">hello@elevateops360.com</strong> before my AI team can go live.</span>
             </div>
           </div>
 
@@ -1631,9 +1633,11 @@
           </div>
 
           <div class="field">
-            <div style="display:flex; align-items:flex-start; gap:12px;">
-              <input type="checkbox" name="consent" id="consent_cb" required style="width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--gold); cursor:pointer;">
-              <label for="consent_cb" style="font-size:13px; color:var(--text-dim); font-weight:400; cursor:pointer; line-height:1.6;">I confirm that the information I've provided is accurate and that I authorize Elevate Ops 360 to access and publish on the social media accounts listed above on my behalf. <span style="color:var(--error);">*</span></label>
+            <input type="checkbox" name="consent" id="consent_cb" required style="display:none;">
+            <div id="consent_toggle" onclick="toggleConsent('consent_cb', 'consent_toggle')" style="display:flex; align-items:flex-start; gap:14px; background:rgba(255,255,255,0.03); border:1.5px solid rgba(214,185,140,0.22); border-radius:8px; padding:16px; cursor:pointer; transition: border-color 0.2s, background 0.2s;">
+              <div id="consent_box" style="width:20px; height:20px; flex-shrink:0; border:1.5px solid rgba(214,185,140,0.4); border-radius:4px; margin-top:1px; display:flex; align-items:center; justify-content:center; transition: all 0.2s; background: transparent;">
+              </div>
+              <span style="font-size:13px; color:var(--text-dim); font-weight:400; line-height:1.6;">I confirm that the information I've provided is accurate and that I authorize Elevate Ops 360 to access and publish on the social media accounts listed above on my behalf. <span style="color:var(--error);">*</span></span>
             </div>
           </div>
         </div>
@@ -1718,31 +1722,46 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function toggleConsent(cbId, wrapperId) {
+    const cb = document.getElementById(cbId);
+    const wrapper = document.getElementById(wrapperId);
+    const box = wrapper.querySelector('div');
+    cb.checked = !cb.checked;
+    if (cb.checked) {
+      wrapper.style.borderColor = 'var(--gold)';
+      wrapper.style.background = 'rgba(214,185,140,0.07)';
+      box.style.background = 'var(--gold)';
+      box.style.borderColor = 'var(--gold)';
+      box.innerHTML = '<span style="color:#0d0c0b; font-size:13px; font-weight:700;">✓</span>';
+    } else {
+      wrapper.style.borderColor = 'rgba(214,185,140,0.22)';
+      wrapper.style.background = 'rgba(255,255,255,0.03)';
+      box.style.background = 'transparent';
+      box.style.borderColor = 'rgba(214,185,140,0.4)';
+      box.innerHTML = '';
+    }
+  }
+
   function nextStep() {
-    // Validate required fields in current step
     const currentPanel = document.querySelectorAll('.form-step')[currentStep];
     const requiredFields = currentPanel.querySelectorAll('input[required], select[required], textarea[required]');
     let valid = true;
+    let firstInvalid = null;
 
     requiredFields.forEach(field => {
-      if (!field.value.trim()) {
+      const isEmpty = field.type === 'checkbox' ? !field.checked : !field.value.trim();
+      if (isEmpty) {
         valid = false;
-        field.style.borderColor = 'var(--error)';
-        field.addEventListener('input', () => {
-          field.style.borderColor = '';
-        }, { once: true });
+        if (!firstInvalid) firstInvalid = field;
+        if (field.type !== 'checkbox') {
+          field.style.borderColor = 'var(--error)';
+          field.addEventListener('input', () => { field.style.borderColor = ''; }, { once: true });
+        }
       }
     });
 
     if (!valid) {
-      const firstInvalid = currentPanel.querySelector('input[required]:invalid, select[required]:invalid, textarea[required]:invalid, input[required][value=""], textarea[required][value=""]');
-      // Scroll to first empty required field
-      requiredFields.forEach(f => {
-        if (!f.value.trim()) {
-          f.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-      });
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
       alert('Please fill in all required fields before continuing.');
       return;
     }
