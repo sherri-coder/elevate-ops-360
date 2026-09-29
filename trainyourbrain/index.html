@@ -248,9 +248,8 @@ footer img{height:48px;width:auto}
 </footer>
 
 <script>
-// Paste your registration endpoint here (Follow Up Boss form URL, Zapier webhook, Formspree, etc.).
-// The form sends the entry as JSON with a POST request.
-const FORM_ENDPOINT = "";
+// Registrations are sent to Formspree as JSON.
+const FORM_ENDPOINT = "https://formspree.io/f/xljdzwyq";
 
 const form = document.getElementById('reg-form');
 const msg  = document.getElementById('msg');
@@ -267,26 +266,22 @@ form.addEventListener('submit', async (e) => {
     msg.textContent = 'Add your name and a valid email address to save your seat.';
     return;
   }
-  if (!FORM_ENDPOINT) {
-    msg.className = 'msg err';
-    msg.textContent = 'Registration is not connected yet. Add your endpoint to FORM_ENDPOINT in the page code.';
-    return;
-  }
   const payload = {
+    _subject: 'New registration: Train Your Marblism Company Brain',
     event: 'Train Your Marblism Company Brain, Oct 26-30 2026',
     name, email,
     business: (data.get('business') || '').trim(),
-    agents: data.getAll('agents'),
+    agents: data.getAll('agents').join(', '),
     page: location.href
   };
   const btn = form.querySelector('button');
   btn.disabled = true;
   try {
-    const res = await fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+    const res = await fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload)});
     if (!res.ok) throw new Error('bad status');
     form.reset();
     msg.className = 'msg ok';
-    msg.textContent = 'You are in. Check your email for your confirmation.';
+    msg.textContent = 'You are in. Watch your email for details.';
   } catch (err) {
     msg.className = 'msg err';
     msg.textContent = 'Something went wrong and your seat was not saved. Please try again.';
