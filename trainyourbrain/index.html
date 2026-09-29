@@ -66,11 +66,21 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;margin:0;lette
 .day p{margin:0;max-width:30rem}
 
 /* takeaways */
-.get{padding:3rem 0 5rem}
+.get{padding:3rem 0 3rem}
 .get ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .get li{border-top:4px solid var(--gold);padding-top:1.1rem}
 .get h3{font-size:1.7rem;color:var(--ink);margin-bottom:.5rem}
 .get p{margin:0;color:var(--text)}
+.get a{color:var(--gold-text);font-weight:600}
+
+/* offer */
+.offer{padding:0 0 5rem}
+.offer .box{border:3px solid var(--ink);border-left:10px solid var(--gold);padding:2.25rem;display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center}
+.offer h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--ink);margin-bottom:.8rem}
+.offer p{margin:0 0 .6rem;max-width:40rem}
+.offer .buy{text-align:center}
+.offer .price{font-family:var(--display);font-size:4.2rem;line-height:1;color:var(--ink);margin-bottom:1rem}
+.offer .price small{display:block;font-family:var(--body);font-size:1rem;color:var(--muted);margin-top:.4rem}
 
 /* host */
 .host{background:var(--soft);padding:4rem 0}
@@ -113,6 +123,8 @@ footer img{height:48px;width:auto}
   .day .num small{margin:0}
   .faces img,.faces .tile{width:min(210px,44vw);height:min(210px,44vw)}
   .get ul{grid-template-columns:1fr}
+  .offer .box{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem}
+  .offer .buy{text-align:left}
   .host .wrap{grid-template-columns:1fr}
   .register .wrap{grid-template-columns:1fr;gap:2.5rem}
   .top .with span{display:none}
@@ -188,8 +200,24 @@ footer img{height:48px;width:auto}
     <ul>
       <li><h3>Training documents</h3><p>We generate them together, live, so your agents start from your real business and not from a blank page.</p></li>
       <li><h3>The science behind the scenes</h3><p>Why agents drift, why they contradict themselves, and what to change so they stop.</p></li>
-      <li><h3>The trainer download</h3><p>My secret sauce: the method behind my training agents, packaged so you can repeat it any time.</p></li>
+      <li><h3>Brain OS by EO360</h3><p>The method behind my training, packaged as a digital download for $25. <a href="#brain-os">See what's inside</a></p></li>
     </ul>
+  </div>
+</section>
+
+<section class="offer" id="brain-os" aria-labelledby="offer-title">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2 id="offer-title">Brain OS by EO360: Master File</h2>
+        <p>Turns your AI into an interviewer and document generator that builds Brain-ready documents for your Marblism AI employees.</p>
+        <p>Includes the intake interview, document generator, role packs, templates, and the Claude skill package. Digital download, version 1.0.</p>
+      </div>
+      <div class="buy">
+        <div class="price">$25<small>One time. Instant access after payment.</small></div>
+        <a class="btn" href="https://buy.stripe.com/bJeaEP54OcPv4kC0P57ss0b">Get Brain OS</a>
+      </div>
+    </div>
   </div>
 </section>
 
