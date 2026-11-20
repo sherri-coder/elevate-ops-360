@@ -10,7 +10,7 @@ Items marked **(proposed)** are not in the current CSS and are not approved. Fon
 | | Corporate mode | Technology mode |
 |---|---|---|
 | Where | Solutions, How It Works, Industries, About/FAQ, footer-adjacent content | Hero product visual, Nexus, Technology We Work With, consult CTA |
-| Background | Ivory / warm neutral **(proposed)** | Deep navy |
+| Background | Ivory / warm neutral **(approved reference `#F7F4EF`)** | Deep navy |
 | Accent | Restrained gold (thin accents only) | Teal, plus gold as the shared accent |
 | Headings | Serif **(proposed, font not chosen or verified)** | Manrope (current) |
 | Body | Inter (current) | Inter (current) |
@@ -30,7 +30,7 @@ Shared across both: gold as the common accent, the logo, spacing scale, radius, 
 - Fonts: Manrope (headings), Inter (body), both self-hosted
 
 ### Proposed additions (corporate mode)
-- Ivory background `#faf6ee` **(proposed)**, warm neutral line and text-muted values to be chosen with Lexi.
+- Ivory background `#F7F4EF` **(approved reference per the Official Brand Assets page, 2026-11-20; not yet in code)**. The earlier placeholder `#faf6ee` is superseded. Warm neutral line and text-muted values are still to be chosen with Lexi. Gold reference `#C8A96B` matches the existing `--gold` token.
 - Serif heading family: not selected. The Brand Kit lists DM Serif Display, Cormorant Garamond and Playfair Display as candidates. Self-hosting and licence check required before use.
 
 ## 3. Contrast reference (computed from the token hex values, WCAG 2.x)
@@ -45,11 +45,13 @@ Shared across both: gold as the common accent, the logo, spacing scale, radius, 
 | gold on navy-900 | 7.65 | Gold text on dark |
 | white on navy-900 | 17.20 | Body on dark |
 | navy-900 on gold | 7.65 | Gold buttons |
-| ink on ivory (proposed) | 16.30 | Body on ivory |
-| slate on ivory (proposed) | 6.48 | Secondary on ivory |
-| teal-700 on ivory (proposed) | 4.64 | Passes for text, thin margin |
+| ink on ivory `#F7F4EF` | 16.01 | Body on ivory |
+| slate on ivory `#F7F4EF` | 6.37 | Secondary on ivory |
+| teal-700 on ivory `#F7F4EF` | 4.56 | Passes for text, very thin margin (4.5 needed) |
 | gold-deep on white | **3.37** | Fails 4.5 for text; large text or decoration only |
-| gold-deep on ivory (proposed) | **3.13** | Fails 4.5 for text; large text or decoration only |
+| gold-deep on ivory `#F7F4EF` | **3.07** | Fails 4.5 for text; large text or decoration only |
+| gold `#C8A96B` on ivory `#F7F4EF` | **2.05** | Fails even 3:1. Decoration, rules and fills only, never text |
+| charcoal on ivory `#F7F4EF` | 14.31 | Alternative body color |
 
 Rules that follow: use gold as an accent line, rule, icon or button fill, not as small body text on light backgrounds. Use `gold-deep` only for text of 24px or larger, or 18.66px bold, which has a 3:1 requirement. Use teal-700, not the bright teal, for text on light backgrounds.
 
@@ -59,7 +61,7 @@ Rules that follow: use gold as an accent line, rule, icon or button fill, not as
 - Dark-mode sections carry the `on-dark` class in the current markup; a matching `on-ivory` class **(proposed)** would scope the corporate overrides.
 
 ## 5. Open questions for Sherri / Lexi
-1. Approve ivory `#faf6ee` as the corporate background, or supply the Brand Kit's warm neutral values.
+1. ~~Approve ivory~~ Resolved: Sherri's Official Brand Assets page gives `#F7F4EF`. Still open: warm neutral line and muted-text values.
 2. Choose the corporate serif from the Brand Kit list.
 3. Photography source (client-owned, licensed stock or none at launch).
 4. Official transparent logo file (still blocked).
