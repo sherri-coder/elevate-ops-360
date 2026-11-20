@@ -21,3 +21,4 @@ Duplicates: `lindahd (1).png` = `lindahd (1) (1).png`; `sonny 1.png` = `sonny 1 
 - Marblism partner flyer: not needed, not used.
 - Marblism training/support: Sherri confirmed she provides training and support for Marblism, so copy audit item 6 is approved. Card still labels Marblism as a third-party tool with no formal partnership claim.
 - Marblism relationship (Sherri, 2026-11-20): Elevate Ops 360 is an approved Marblism agency and Sherri is a strategic partner; Marblism advertises the agency on its own site. Site copy updated accordingly (card note, footer fine print, FAQ). Not independently verified by Claude; consider linking the Marblism agency listing as proof.
+- Verified 2026-11-20: Elevate Ops 360 appears on https://www.marblism.com/agencies?type=agency with the badge 'Official partner' (category Automation & Operations). Card now links to that directory.
