@@ -5,3 +5,4 @@
 - Transparency verified (corner pixel alpha 0); legible on ivory #F7F4EF, navy and white.
 - The earlier background-removed derivatives (`mark.png`, `mark-96.png`, `favicon-64.png`) are unofficial and no longer referenced.
 - Marblism logo: original NOT yet obtained (OneDrive link returned 403); not added.
+- Marblism: `../marblism-wordmark-320.png` is a resize of the original `originals/marblism/logo_name.png` (added by Sherri). Used on the Technology section plate only as a third-party tool mark; no partnership claimed. Brand-guideline review still recommended.
