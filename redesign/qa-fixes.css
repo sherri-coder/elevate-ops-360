@@ -57,3 +57,8 @@ main:focus{outline:none}
   .tile .icon{font-size:1.4rem;padding:4px}
   .tile span{font-size:.58rem;letter-spacing:-.005em}
 }
+
+/* Release-candidate: email fallback contact (verified address already used on production index.html) */
+.consult .alt-contact{margin:16px 0 0;font-size:.95rem;color:rgba(255,255,255,.82)}
+.consult .alt-contact a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.consult .alt-contact a:focus-visible{outline:2px solid #fff;outline-offset:3px}
