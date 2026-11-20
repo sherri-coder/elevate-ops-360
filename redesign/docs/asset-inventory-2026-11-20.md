@@ -15,3 +15,8 @@ Originals are committed unmodified under `redesign/assets/originals/` (SHA-256 o
 | Other items (Partner Referral QR.png, User Referral QR.png, guides PDFs, TSX/JSX trainers, Pop-Art pptx, VIDEOS and Webinar zips) | various | OneDrive | Not reviewed | Not used |
 
 Duplicates: `lindahd (1).png` = `lindahd (1) (1).png`; `sonny 1.png` = `sonny 1 (1).png`; `stan sunglasses 2.png` = `stan sunglasses 2 (1).png`; `stanstandup 1.png` = `stanstandup 1 (1).png`; `6802caff...LindaWebp.webp` = its `(1)` copy (same hashes).
+
+## Sherri's decisions (2026-11-20)
+- Nexus logo: use the variant that matches the colour scheme. The navy/blue variant (30789.jpg) is used in the navy Nexus section as assets/nexus-logo-480.png (480px resize; original unmodified in assets/originals/notion-unlabeled/). The three ivory/gold/charcoal variants (31441, 31444, 31447) are kept for corporate/ivory contexts if needed.
+- Marblism partner flyer: not needed, not used.
+- Marblism training/support: Sherri confirmed she provides training and support for Marblism, so copy audit item 6 is approved. Card still labels Marblism as a third-party tool with no formal partnership claim.

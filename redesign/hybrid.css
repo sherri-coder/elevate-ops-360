@@ -14,3 +14,5 @@
 #solutions .accent,#how .accent,#real-estate .accent,#about .accent{color:var(--ink)}
 /* corporate cards: ivory-friendly, thin gold edge, soft (no glow) shadow */
 #solutions .sol,#solutions .card,#real-estate .card,#about .card,#how .step{border-color:rgba(200,169,107,.55);box-shadow:0 10px 28px rgba(60,44,12,.08)}
+
+.nx-brand{display:block;width:240px;max-width:60%;height:auto;border-radius:14px;margin:0 0 22px}
