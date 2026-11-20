@@ -270,3 +270,27 @@ section{position:relative}
   .chat .bubble,.chat .who{margin-left:0}
   .foot-grid{grid-template-columns:1fr}
 }
+
+
+/* Lexi visual-fidelity pass — isolated review branch. Keeps original content and breakpoints. */
+@media (min-width: 1000px) {
+  .hero {background:
+    radial-gradient(ellipse 44% 55% at 74% 43%,rgba(0,218,230,.25),transparent 75%),
+    radial-gradient(ellipse 42% 44% at 56% 85%,rgba(0,184,202,.19),transparent 78%),
+    linear-gradient(130deg,#061728 0%,#05253a 56%,#063b49 100%);}
+  .hero-grid {grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:28px;}
+  .hero h1 {font-size:clamp(3.5rem,5.05vw,5.2rem);line-height:1.02;letter-spacing:-.045em;text-shadow:0 5px 26px rgba(0,0,0,.15);}
+  .hero .lede {font-size:clamp(1.15rem,1.65vw,1.55rem);}
+  .mock-wrap {filter:drop-shadow(0 0 32px rgba(0,237,237,.2));}
+  .nx {transform:perspective(1600px) rotateY(-5deg) rotateX(1deg);border-color:rgba(65,255,250,.9);box-shadow:0 0 0 1px rgba(185,255,252,.45),0 0 32px rgba(0,238,242,.34),0 30px 85px rgba(0,0,0,.53),inset 0 0 20px rgba(0,255,240,.07);}
+}
+.nx {position:relative;}
+.nx::after {content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(220,255,255,.55);opacity:.8;}
+.flow {box-shadow:0 0 0 1px rgba(56,238,228,.4),0 0 30px rgba(0,214,221,.23),0 18px 38px rgba(0,35,45,.23);}
+.sol {transition:transform .2s ease,box-shadow .2s ease;}
+.sol:hover {transform:translateY(-5px);box-shadow:0 20px 45px rgba(4,29,51,.18);}
+@media (max-width: 999px) {
+  .hero {background:radial-gradient(ellipse at 72% 68%,rgba(0,192,205,.24),transparent 70%),linear-gradient(160deg,#061729,#063547);}
+  .nx {box-shadow:0 0 0 1px rgba(57,233,228,.5),0 0 24px rgba(0,220,222,.22),0 16px 44px rgba(0,0,0,.3);}
+}
+@media (prefers-reduced-motion:reduce) {.sol{transition:none;}}
