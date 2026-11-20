@@ -1,0 +1,41 @@
+/* QA / accessibility / responsive fixes (functional only).
+   Loaded AFTER styles.css so it never edits or reverts the visual design in styles.css
+   (including Lexi's refinements in commit 45f10b5). Each rule says what it fixes. */
+
+/* FIX 1: Hero mockup was wider than its grid column and got clipped at ~1000-1300px.
+   Cause: grid items default to min-width:auto. Let the mockup shrink to its column. */
+.hero-grid > *{min-width:0}
+.nx{grid-template-columns:150px minmax(0,1fr)}
+.nx-main{min-width:0}
+.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+.panels{grid-template-columns:minmax(0,1.1fr) minmax(0,1.05fr) minmax(0,1fr)}
+@media (min-width:1000px) and (max-width:1199px){
+  /* Not enough room for the sidebar at this width; same approach the stylesheet already uses on phones. */
+  .nx{grid-template-columns:minmax(0,1fr)}
+  .nx-side{display:none}
+}
+
+/* FIX 2: Horizontal scroll at 320px in the Technology section. */
+.tech-grid > *{min-width:0}
+.chips{flex-wrap:wrap}
+.fine,.note{overflow-wrap:anywhere}
+
+/* FIX 3: Contrast. Teal kicker on light grey measured 4.47:1 (needs 4.5:1). */
+.kicker{color:#08695f}
+.on-dark .kicker{color:var(--teal)}
+
+/* FIX 4: Footer headings changed from h4 to h3 (heading order); keep the same look. */
+.foot h3{color:#fff;font-size:1rem;margin-bottom:12px}
+
+/* FIX 5: Touch/click target size (WCAG 2.2 AA target size minimum 24px). */
+.nav-links a{display:inline-block;padding:8px 2px}
+.foot-grid a{display:inline-block;padding:6px 0}
+
+/* Skip-link target should not draw a focus ring when focused programmatically. */
+main:focus{outline:none}
+
+/* FIX 6: The perspective tilt projects the mockup's right edge ~45px beyond its column,
+   which clipped it at 1000-1400px viewports. Reserve that space; tilt and styling unchanged. */
+@media (min-width:1000px) and (max-width:1439px){
+  .mock-wrap{padding-right:48px}
+}

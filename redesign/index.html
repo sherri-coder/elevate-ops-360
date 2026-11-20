@@ -9,6 +9,7 @@
 <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="qa-fixes.css">
 </head>
 <body>
 <!-- Icon sprite -->
@@ -40,7 +41,7 @@
 <a class="skip" href="#main">Skip to main content</a>
 
 <header class="site-header">
-  <div class="wrap nav">
+  <nav class="wrap nav" aria-label="Primary">
     <a class="brand" href="#top" aria-label="Elevate Ops 360 home">
       <img src="assets/mark.png" alt="" width="54" height="52">
       <span class="brand-text">Elevate<span>Ops 360</span></span>
@@ -55,10 +56,10 @@
       <li class="nav-cta-m"><a class="btn btn-gold btn-sm" href="#consult">Book a Demo</a></li>
     </ul>
     <a class="btn btn-gold nav-cta" href="#consult"><svg class="icon"><use href="#i-cal"/></svg>Book a Demo</a>
-  </div>
+  </nav>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap hero-grid">
@@ -336,8 +337,8 @@
         <a class="brand" href="#top"><img src="assets/mark.png" alt="" width="54" height="52"><span class="brand-text">Elevate<span>Ops 360</span></span></a>
         <p style="margin-top:14px;max-width:34ch">Business Problems. Smarter Solutions. Real Results.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="#solutions">Solutions</a></li><li><a href="../nexus/">Nexus</a></li><li><a href="#how">How It Works</a></li><li><a href="../trainyourbrain/">Training</a></li></ul></div>
-      <div><h4>Get started</h4><ul><li><a href="#consult">Book a Demo</a></li><li><a href="../live/">Live events</a></li></ul></div>
+      <div><h3>Explore</h3><ul><li><a href="#solutions">Solutions</a></li><li><a href="../nexus/">Nexus</a></li><li><a href="#how">How It Works</a></li><li><a href="../trainyourbrain/">Training</a></li></ul></div>
+      <div><h3>Get started</h3><ul><li><a href="#consult">Book a Demo</a></li><li><a href="../live/">Live events</a></li></ul></div>
     </div>
     <div class="legal"><span>&copy; 2026 Elevate Ops 360. Prototype for review. Not for publication.</span><span>Privacy and accessibility pages to be added before launch.</span></div>
   </div>
@@ -352,7 +353,9 @@
     b.setAttribute('aria-expanded',o);
     b.setAttribute('aria-label',o?'Close menu':'Open menu');
   });
-  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+  function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu')}
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){close()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){close();b.focus()}});
 })();
 </script>
 </body>
