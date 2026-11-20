@@ -5,10 +5,19 @@
 /* FIX 1: Hero mockup was wider than its grid column and got clipped at ~1000-1300px.
    Cause: grid items default to min-width:auto. Let the mockup shrink to its column. */
 .hero-grid > *{min-width:0}
-.nx{grid-template-columns:150px minmax(0,1fr)}
 .nx-main{min-width:0}
-.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
-.panels{grid-template-columns:minmax(0,1.1fr) minmax(0,1.05fr) minmax(0,1fr)}
+/* Column rules are scoped by breakpoint. styles.css switches the mockup to its phone layout at
+   max-width:640px; these must not override it (qa-fixes.css loads later, so an unscoped rule wins). */
+@media (min-width:641px){
+  .nx{grid-template-columns:150px minmax(0,1fr)}
+  .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .panels{grid-template-columns:minmax(0,1.1fr) minmax(0,1.05fr) minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .nx{grid-template-columns:minmax(0,1fr)}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .panels{grid-template-columns:minmax(0,1fr)}
+}
 @media (min-width:1000px) and (max-width:1199px){
   /* Not enough room for the sidebar at this width; same approach the stylesheet already uses on phones. */
   .nx{grid-template-columns:minmax(0,1fr)}
@@ -38,4 +47,13 @@ main:focus{outline:none}
    which clipped it at 1000-1400px viewports. Reserve that space; tilt and styling unchanged. */
 @media (min-width:1000px) and (max-width:1439px){
   .mock-wrap{padding-right:48px}
+}
+
+/* FIX 7 (2026-11-20): mockup tile text overflowed its tile by 12-14px at 1000-1439px
+   in Chromium, Firefox and WebKit ("Appointments"). Compact the tile in that range only. */
+.tile>div{min-width:0}
+@media (min-width:1000px) and (max-width:1439px){
+  .tile{gap:6px;padding:8px 7px}
+  .tile .icon{font-size:1.4rem;padding:4px}
+  .tile span{font-size:.58rem;letter-spacing:-.005em}
 }
