@@ -14,3 +14,15 @@
 .hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
 .top-dark .cta-row{justify-content:center}
 .pair .more{display:inline-flex;align-items:center;gap:6px;align-self:flex-start}
+
+/* Premium photo cards (hub + homepage) */
+.hub-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.sol-top.has-img{height:auto;aspect-ratio:16/10;background:#0a2540}
+.sol-top.has-img img{transition:transform .5s ease}
+.sol:hover .sol-top.has-img img{transform:scale(1.04)}
+.sol-top.has-img::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,16,28,0) 45%,rgba(4,16,28,.72) 100%)}
+.sol-top.has-img::after{display:block;content:"";position:absolute;left:0;right:0;bottom:0;height:3px;z-index:2;background:#C8A96B;background-image:none}
+.sol-top .chip{position:absolute;left:16px;bottom:14px;z-index:2;font:700 .72rem var(--font-head);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(4,16,28,.55);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 12px;backdrop-filter:blur(4px)}
+.sol-top.t4{aspect-ratio:16/10;height:auto}
+.hub-cards .sol h2{font-size:1.4rem;margin:0}
+@media (prefers-reduced-motion:reduce){.sol-top.has-img img{transition:none}.sol:hover .sol-top.has-img img{transform:none}}
