@@ -16,3 +16,4 @@
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(max-width:760px){.vid-grid{grid-template-columns:1fr}.cal-d{min-height:56px}.cal-e{font-size:0;height:6px;background:#c8a96b;border-radius:3px}}
 .ac-hero{padding:96px 0 56px!important}.ac-hero .btn-ghost,.cal .btn-ghost{color:#0a2540;border-color:#0a2540;background:transparent}.ac-hero .lede{font-size:1.15rem;color:#33424d}
+.ac-hero .eyebrow{color:#0b5a57}
