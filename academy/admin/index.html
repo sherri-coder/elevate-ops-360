@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academy Content Helper | Elevate Ops 360</title>
+<meta name="description" content="Events calendar, training videos, and a link to the Parsons Learning Academy from Elevate Ops 360.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/qa-fixes.css">
+<link rel="stylesheet" href="/hybrid.css">
+<link rel="stylesheet" href="/solutions.css">
+<link rel="stylesheet" href="/academy/academy.css">
+<link rel="icon" type="image/png" href="/assets/favicon-official-64.png">
+</head>
+<body>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5M18 8v6M15 11h6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-4.5 3.5V16H4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 4.5-9 4.5-9-4.5z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M9 15l2.2 2.2L15.5 13"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 5v2M3 13h18"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-7.5 9 7.5M5.5 9.5V20h13V9.5M10 20v-6h4v6"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5M22 9v6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m10 8.5 5 3.5-5 3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m8 12.3 2.8 2.8L16 9.5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-funnel" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V20l-4-2v-5.5z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13.5h.01M15 13.5h.01M9 16.5h6"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.5-3.4 3-5.2 6.5-5.2s6 1.8 6.5 5.2M16 14.6c2.6.1 4.6 1.5 5 4.4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.8 7.5 9 4.3-1.2 7.5-4.4 7.5-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+</svg>
+
+
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="/" aria-label="Elevate Ops 360 home"><img src="/assets/mark-official-108.png" alt="" width="54" height="52"><span class="brand-text">Elevate <span>Ops 360</span></span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">&#9776;</button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/solutions/">Solutions</a></li>
+      <li><a href="/solutions/real-estate/">Real Estate</a></li>
+      <li><a href="/solutions/business/">Business</a></li>
+      <li><a href="/solutions/legal/">Legal</a></li>
+      <li><a href="/#nexus">Nexus</a></li>
+      <li><a href="/academy/">Academy</a></li>
+      <li class="nav-cta-m"><a class="btn btn-gold btn-sm" href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding">Book an AI Strategy Call</a></li>
+    </ul>
+    <a class="btn btn-gold nav-cta" href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding"><svg class="icon"><use href="#i-cal"/></svg>Book an AI Strategy Call</a>
+  </nav>
+</header>
+<main id="main" tabindex="-1"><section class="sec adm"><div class="wrap">
+<h1>Academy content helper</h1>
+<p>Add events and YouTube videos here, then copy the result into <code>academy/content.json</code> (GitHub: open the file, click the pencil, paste, commit). The Academy page updates after the site redeploys. This page does not save anything by itself.</p>
+<div class="box"><h2>Add a video</h2>
+<label for="vs">Section</label><select id="vs"></select>
+<label for="vu">YouTube link</label><input id="vu" placeholder="https://www.youtube.com/watch?v=...">
+<label for="vt">Title</label><input id="vt"><label for="vd">Short description (optional)</label><input id="vd">
+<p><button type="button" class="btn btn-gold" id="addv">Add video</button></p></div>
+<div class="box"><h2>Add an event</h2>
+<label for="et">Title</label><input id="et"><div class="row"><div><label for="ed">Start date</label><input id="ed" type="date"></div><div><label for="ee">End date (optional)</label><input id="ee" type="date"></div></div>
+<div class="row"><div><label for="etime">Time (optional)</label><input id="etime" placeholder="4 PM Eastern"></div><div><label for="eu">Link</label><input id="eu" placeholder="/live/ or https://..."></div></div>
+<p><button type="button" class="btn btn-gold" id="adde">Add event</button></p></div>
+<div class="box"><h2>content.json</h2><p>Starts from the current live content. <button type="button" class="btn btn-ghost btn-sm" id="copy">Copy</button> <span id="msg" role="status"></span></p><label for="out" class="sr-only">content.json</label><textarea id="out"></textarea></div>
+</div></section></main>
+<footer class="foot"><div class="wrap"><div class="foot-grid"><div><a class="brand" href="/"><img src="/assets/mark-official-108.png" alt="" width="54" height="52"><span class="brand-text">Elevate <span>Ops 360</span></span></a><p style="margin-top:14px;max-width:34ch">Business Problems. Smarter Solutions. Real Results.</p></div><div><h3>Explore</h3><ul><li><a href="/solutions/">Solutions</a></li><li><a href="/solutions/real-estate/">Real Estate</a></li><li><a href="/solutions/business/">Business</a></li><li><a href="/solutions/legal/">Legal</a></li><li><a href="/nexus/">Nexus</a></li><li><a href="/trainyourbrain/">Training</a></li></ul></div><div><h3>Get started</h3><ul><li><a href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding">Book an AI Strategy Call</a></li><li><a href="/live/">Live events</a></li><li><a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></li></ul></div></div><div class="legal"><span>&copy; 2026 Elevate Ops 360.</span><span><a href="/privacy.html">Privacy Policy</a> &middot; <a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></span></div></div></footer>
+<script>
+(function(){var C={events:[],videoSections:[]},out=document.getElementById("out"),vs=document.getElementById("vs");
+function show(){out.value=JSON.stringify(C,null,1);}
+fetch("/academy/content.json").then(function(r){return r.json();}).then(function(c){C=c;C.events=C.events||[];C.videoSections=C.videoSections||[];C.videoSections.forEach(function(s,i){var o=document.createElement("option");o.value=i;o.textContent=s.title;vs.appendChild(o);});show();});
+document.getElementById("addv").onclick=function(){var u=document.getElementById("vu").value.trim();if(!/youtu/.test(u)){alert("Paste a YouTube link.");return;}C.videoSections[+vs.value].videos.push({url:u,title:document.getElementById("vt").value.trim(),description:document.getElementById("vd").value.trim()});show();["vu","vt","vd"].forEach(function(i){document.getElementById(i).value="";});};
+document.getElementById("adde").onclick=function(){var t=document.getElementById("et").value.trim(),d=document.getElementById("ed").value;if(!t||!d){alert("Title and start date are required.");return;}var e={title:t,date:d,time:document.getElementById("etime").value.trim(),url:document.getElementById("eu").value.trim()||"/academy/"};var en=document.getElementById("ee").value;if(en)e.end=en;C.events.push(e);show();};
+document.getElementById("copy").onclick=function(){out.select();document.execCommand("copy");document.getElementById("msg").textContent="Copied.";};
+var b=document.querySelector('.menu-btn'),n=document.getElementById('primary-nav');if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);});
+})();
+</script></body></html>

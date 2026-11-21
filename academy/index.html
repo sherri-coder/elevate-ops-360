@@ -92,12 +92,8 @@
 
 <section class="sec" id="videos" aria-labelledby="vid-h">
   <div class="wrap">
-    <div class="sec-head"><h2 id="vid-h">Training <span>videos</span></h2><p>Recordings and walkthroughs will appear here.</p></div>
-    <div class="vid-grid">
-      <article class="vid"><div class="vid-ph" role="img" aria-label="Video placeholder"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></div><h3>Video title coming soon</h3><p>Placeholder for a training recording.</p></article>
-      <article class="vid"><div class="vid-ph" role="img" aria-label="Video placeholder"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></div><h3>Video title coming soon</h3><p>Placeholder for a training recording.</p></article>
-      <article class="vid"><div class="vid-ph" role="img" aria-label="Video placeholder"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></div><h3>Video title coming soon</h3><p>Placeholder for a training recording.</p></article>
-    </div>
+    <div class="sec-head"><h2 id="vid-h">Training <span>videos</span></h2><p>Watch recordings and walkthroughs by topic.</p></div>
+    <div id="vid-sections"></div>
   </div>
 </section>
 
@@ -105,7 +101,7 @@
   <div class="wrap">
     <div class="pla">
       <div><h2 id="pla-h">Parsons Learning <span>Academy</span></h2><p>Go deeper with self-paced courses and learning paths in our Parsons Learning Academy.</p></div>
-      <a class="btn btn-gold" id="pla-link" href="https://train.elevateops360.com" target="_blank" rel="noopener">Open the Parsons Learning Academy<span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn btn-gold" id="pla-link" href="https://learn.parsonsregroup.com" target="_blank" rel="noopener">Open the Parsons Learning Academy<span class="sr-only"> (opens in a new tab)</span></a>
     </div>
   </div>
 </section>
@@ -113,11 +109,7 @@
 <footer class="foot"><div class="wrap"><div class="foot-grid"><div><a class="brand" href="/"><img src="/assets/mark-official-108.png" alt="" width="54" height="52"><span class="brand-text">Elevate <span>Ops 360</span></span></a><p style="margin-top:14px;max-width:34ch">Business Problems. Smarter Solutions. Real Results.</p></div><div><h3>Explore</h3><ul><li><a href="/solutions/">Solutions</a></li><li><a href="/solutions/real-estate/">Real Estate</a></li><li><a href="/solutions/business/">Business</a></li><li><a href="/solutions/legal/">Legal</a></li><li><a href="/nexus/">Nexus</a></li><li><a href="/trainyourbrain/">Training</a></li></ul></div><div><h3>Get started</h3><ul><li><a href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding">Book an AI Strategy Call</a></li><li><a href="/live/">Live events</a></li><li><a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></li></ul></div></div><div class="legal"><span>&copy; 2026 Elevate Ops 360.</span><span><a href="/privacy.html">Privacy Policy</a> &middot; <a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></span></div></div></footer>
 <script>
 (function(){
-/* Add events here. date = YYYY-MM-DD (end optional). */
-var EVENTS=[
- {title:"Train Your Marblism Company Brain (5-day live series)",date:"2026-10-26",end:"2026-10-30",time:"4 PM Eastern",url:"/trainyourbrain/"},
- {title:"CRM Masterclass",date:"2026-11-17",time:"",url:"/live/"}
-];
+var EVENTS=[];
 var MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
 var today=new Date(),y=today.getFullYear(),m=today.getMonth();
 function pd(s){var a=s.split("-");return new Date(+a[0],+a[1]-1,+a[2]);}
@@ -139,7 +131,7 @@ function render(){
 }
 document.getElementById("cal-prev").onclick=function(){m--;if(m<0){m=11;y--;}render();};
 document.getElementById("cal-next").onclick=function(){m++;if(m>11){m=0;y++;}render();};
-render();
+function init(){render();
 var ul=document.getElementById("ev-list"),now=new Date(today.getFullYear(),today.getMonth(),today.getDate());
 var sorted=EVENTS.slice().sort(function(a,b){return pd(b.date)-pd(a.date);});
 var upcoming=0;
@@ -153,7 +145,28 @@ sorted.forEach(function(e){
  li.querySelector(".tag").textContent=past?"Past event":"Upcoming";
  ul.appendChild(li);
 });
-if(!upcoming)document.getElementById("ev-empty").hidden=false;
+if(!upcoming)document.getElementById("ev-empty").hidden=false;}
+function ytId(u){var m=String(u||"").match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);return m?m[1]:"";}
+function renderVideos(secs){
+ var root=document.getElementById("vid-sections");
+ secs.forEach(function(sec){
+  var w=document.createElement("div");w.className="vsec";
+  var h=document.createElement("h3");h.textContent=sec.title;w.appendChild(h);
+  var vids=(sec.videos||[]).filter(function(v){return ytId(v.url);});
+  if(!vids.length){var p=document.createElement("p");p.className="fine vnone";p.textContent="Videos coming soon.";w.appendChild(p);}
+  else{var g=document.createElement("div");g.className="vid-grid";
+   vids.forEach(function(v){var id=ytId(v.url),t=v.title||"Watch video";
+    var art=document.createElement("article");art.className="vid";
+    var btn=document.createElement("button");btn.type="button";btn.className="vid-ph yt";btn.setAttribute("aria-label","Play video: "+t);
+    btn.style.backgroundImage="url(https://i.ytimg.com/vi/"+id+"/hqdefault.jpg)";
+    btn.innerHTML='<svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>';
+    btn.onclick=function(){var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";f.title=t;f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;f.className="vid-ph";btn.replaceWith(f);};
+    var h3=document.createElement("h4");h3.textContent=t;art.appendChild(btn);art.appendChild(h3);
+    if(v.description){var d=document.createElement("p");d.textContent=v.description;art.appendChild(d);}
+    g.appendChild(art);});w.appendChild(g);}
+  root.appendChild(w);});
+}
+fetch("/academy/content.json").then(function(r){return r.json();}).then(function(c){EVENTS=c.events||[];init();renderVideos(c.videoSections||[]);}).catch(function(){init();document.getElementById("vid-sections").innerHTML='<p class="fine">Videos are coming soon.</p>';});
 var b=document.querySelector('.menu-btn'),n=document.getElementById('primary-nav');
 if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');});
 })();
