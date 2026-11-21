@@ -4,7 +4,7 @@
 .top-dark h1{color:#fff}.top-dark h1 span{color:#5fd6c8}
 .pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;margin-top:8px}
 .pair{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
-.pair h3{font-size:1.15rem;margin:0;color:#0a2745}
+.pair h3,.hub .pair h2{font-size:1.15rem;margin:0;color:#0a2745}
 .pair .lbl{font:700 .72rem var(--font-head);letter-spacing:.1em;text-transform:uppercase;color:#4a5568;margin:6px 0 0}
 .pair p{margin:0;color:#2d3748}
 .pair .tag{margin-top:auto}
@@ -13,3 +13,4 @@
 .avail .pair h3{font-size:1.05rem}
 .hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
 .top-dark .cta-row{justify-content:center}
+.pair .more{display:inline-flex;align-items:center;gap:6px;align-self:flex-start}
