@@ -11,7 +11,6 @@
 #featured-solutions .sec-head h2 span,#approach .sec-head h2 span{color:var(--ink)}
 
 /* 1. three solution cards */
-.cards3{grid-template-columns:repeat(3,1fr)}
 
 /* 2. featured solution cards */
 .feat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
@@ -99,7 +98,6 @@
   .agents{grid-template-columns:repeat(2,minmax(0,1fr))}
   .nx-intro,.nx-ai,.marb-grid,.works-grid{grid-template-columns:1fr}
 }
-@media (max-width:900px){.cards3{grid-template-columns:1fr}}
 @media (max-width:640px){
   .feat-grid,.agents,.nx-outcomes{grid-template-columns:1fr}
   .nx-ai{padding:24px}
