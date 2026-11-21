@@ -1,0 +1,18 @@
+/* Option C hybrid brand system, applied on top of styles.css and qa-fixes.css.
+   Corporate/service sections: warm ivory #F7F4EF + restrained gold #C8A96B.
+   Nexus/technology sections: unchanged deep navy + teal (on-dark).
+   Gold is an accent only (rules, markers, icon strokes); never body text on light (gold-deep on ivory is 3:1, large text only). */
+:root{--ivory:#f7f4ef;--ivory-deep:#efe9dd;--gold-rule:#c8a96b}
+#solutions,#real-estate,#about{background:var(--ivory)}
+.how{background:var(--ivory-deep)}
+/* gold hairline under corporate section headings */
+#solutions .sec-head h2::after,#how .sec-head h2::after,#real-estate .sec-head h2::after,#about .sec-head h2::after{
+  content:"";display:block;width:64px;height:2px;margin:18px auto 0;background:var(--gold-rule);border-radius:2px}
+/* corporate kickers: warm, not teal */
+#solutions .kicker,#how .kicker,#real-estate .kicker,#about .kicker{color:#7a5d2a}
+#solutions .sec-head h2 span,#how .sec-head h2 span,#real-estate .sec-head h2 span,#about .sec-head h2 span,
+#solutions .accent,#how .accent,#real-estate .accent,#about .accent{color:var(--ink)}
+/* corporate cards: ivory-friendly, thin gold edge, soft (no glow) shadow */
+#solutions .sol,#solutions .card,#real-estate .card,#about .card,#how .step{border-color:rgba(200,169,107,.55);box-shadow:0 10px 28px rgba(60,44,12,.08)}
+
+.nx-brand{display:block;width:240px;max-width:60%;height:auto;border-radius:14px;margin:0 0 22px}
