@@ -26,3 +26,4 @@
 .sol-top.t4{aspect-ratio:16/10;height:auto}
 .hub-cards .sol h2{font-size:1.4rem;margin:0}
 @media (prefers-reduced-motion:reduce){.sol-top.has-img img{transition:none}.sol:hover .sol-top.has-img img{transform:none}}
+@media(max-width:860px){.top-dark{padding-top:168px}}
