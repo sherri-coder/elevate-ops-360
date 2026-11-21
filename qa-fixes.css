@@ -68,3 +68,6 @@ main:focus{outline:none}
 .crm-logos img{height:32px;width:auto;max-width:150px;object-fit:contain;display:block}
 .crm-logos .nm{font:700 1rem var(--font-head);color:#0a2540}
 .crm-logos.center{justify-content:center;margin-top:32px}
+.sol-top.has-img{height:170px;display:block}
+.sol-top.has-img::after{display:none}
+.sol-top.has-img img{width:100%;height:100%;object-fit:cover;display:block}
