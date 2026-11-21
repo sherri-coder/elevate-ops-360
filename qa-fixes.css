@@ -37,7 +37,7 @@
 .foot h3{color:#fff;font-size:1rem;margin-bottom:12px}
 
 /* FIX 5: Touch/click target size (WCAG 2.2 AA target size minimum 24px). */
-.nav-links a{display:inline-block;padding:8px 2px}
+.nav-links a{display:inline-block;padding:8px 2px;white-space:nowrap}
 .foot-grid a{display:inline-block;padding:6px 0}
 
 /* Skip-link target should not draw a focus ring when focused programmatically. */
