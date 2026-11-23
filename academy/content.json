@@ -1,0 +1,46 @@
+{
+ "_help": "Edit via /academy/admin/ or directly. Event date format YYYY-MM-DD. Video url = any YouTube link.",
+ "events": [
+  {
+   "title": "Train Your Marblism Company Brain (5-day live series)",
+   "date": "2026-10-26",
+   "end": "2026-10-30",
+   "time": "4 PM Eastern",
+   "url": "/trainyourbrain/"
+  },
+  {
+   "title": "CRM Masterclass",
+   "date": "2026-11-17",
+   "time": "",
+   "url": "/live/"
+  },
+  {
+   "title": "Nexus Live Demo",
+   "date": "2026-11-23",
+   "time": "7:00 PM Eastern",
+   "url": "/live/"
+  }
+ ],
+ "videoSections": [
+  {
+   "id": "elevate-real-estate",
+   "title": "Elevate Real Estate",
+   "videos": []
+  },
+  {
+   "id": "elevate-business",
+   "title": "Elevate Business",
+   "videos": []
+  },
+  {
+   "id": "elevate-legal",
+   "title": "Elevate Legal",
+   "videos": []
+  },
+  {
+   "id": "marblism",
+   "title": "Marblism",
+   "videos": []
+  }
+ ]
+}

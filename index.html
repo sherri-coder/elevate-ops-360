@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="qa-fixes.css">
 <link rel="stylesheet" href="hybrid.css">
+<link rel="stylesheet" href="round2.css">
 <link rel="stylesheet" href="/solutions.css">
   <link rel="icon" type="image/png" href="assets/favicon-official-64.png">
 </head>
@@ -52,12 +53,13 @@
     <ul class="nav-links" id="primary-nav">
       <li><a href="#solutions">Solutions</a></li>
       <li><a href="#industries">Industries</a></li>
-      <li><a href="#nexus">Nexus</a></li>
-      <li><a href="#academy">Academy</a></li>
+      <li><a href="https://nexus.elevateops360.com">Nexus</a></li>
+      <li><a href="/academy/">Academy</a></li>
+      <li><a href="/affiliates/">Affiliates</a></li>
       <li><a href="#about">About</a></li>
-      <li class="nav-cta-m"><a class="btn btn-gold btn-sm" href="#consult">Book an AI Strategy Call</a></li>
+      <li class="nav-cta-m"><a class="btn btn-gold btn-sm" href="#consult">Book a Strategy Call</a></li>
     </ul>
-    <a class="btn btn-gold nav-cta" href="#consult"><svg class="icon"><use href="#i-cal"/></svg>Book an AI Strategy Call</a>
+    <a class="btn btn-gold nav-cta" href="#consult"><svg class="icon"><use href="#i-cal"/></svg>Book a Strategy Call</a>
   </nav>
 </header>
 
@@ -143,13 +145,13 @@
   </div>
 </section>
 
-<!-- WORKFLOW STRIP -->
-<div class="wrap flow-wrap">
-  <ol class="flow" aria-label="Example workflow: how a lead could move through connected systems">
-    <li><span class="ico"><svg class="icon"><use href="#i-user"/></svg></span><div><b>Lead Captured</b><span>From your website, ads, or listing platforms</span></div></li>
-    <li><span class="ico"><svg class="icon"><use href="#i-chat"/></svg></span><div><b>AI Engages</b><span>Drafts a fast, relevant response for your review</span></div></li>
-    <li><span class="ico"><svg class="icon"><use href="#i-layers"/></svg></span><div><b>CRM Updated</b><span>Details, tags, and tasks recorded in your CRM</span></div></li>
-    <li><span class="ico"><svg class="icon"><use href="#i-cal"/></svg></span><div><b>Next Step Set</b><span>A person takes over with context and a clear next action</span></div></li>
+<!-- FEATURED SOLUTIONS STRIP -->
+<div class="wrap flow-wrap" id="featured-solutions">
+  <ol class="flow" aria-label="Featured solutions">
+    <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></span><div><b><a href="/solutions/real-estate/">Property Prospect Pro</a></b><span>Property intelligence and seller-opportunity research in one workflow</span></div></li>
+    <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><div><b><a href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding">CRM Audit &amp; Revamp</a></b><span>Find the weak points in your CRM and get a prioritized roadmap</span></div></li>
+    <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><div><b><a href="/solutions/real-estate/#problems">Transaction Pro</a></b><span>Keep every deal organized from contract to close</span></div></li>
+    <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span><div><b><a href="/solutions/real-estate/#problems">Contract Solution</a></b><span>Contract review support, with a person making the final call</span></div></li>
   </ol>
 </div>
 
@@ -158,7 +160,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>Solutions Built for <span>How You Work</span></h2>
-      <p>Industry-focused AI and automation to help you grow, operate, and scale with confidence.</p>
+      <p>Custom AI, automation, and workflow solutions to help you grow, operate, and scale with confidence.</p>
     </div>
     <div class="cards4">
       <article class="sol"><div class="sol-top t1 has-img"><img src="/assets/card-business.jpg" alt="Modern conference room with a team gathered around a table" width="640" height="397" decoding="async"></div>
@@ -170,45 +172,77 @@
       <article class="sol"><div class="sol-top t3 has-img"><img src="/assets/card-legal.jpg" alt="Bright office desk with a notebook and law books" width="640" height="397" decoding="async"></div>
         <div class="sol-body"><h3>Elevate Legal</h3><p>Workflow and case-support examples for law firms and medical-legal businesses.</p>
         <a class="more" href="/solutions/legal/">Explore Legal <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>
-      <article class="sol" id="academy"><div class="sol-top t4"><svg class="icon"><use href="#i-cap"/></svg></div>
+      <article class="sol" id="academy"><div class="sol-top t4 has-img"><img src="/assets/card-academy.jpg" alt="Conference room set up for a training session" width="640" height="397" loading="lazy" decoding="async"></div>
         <div class="sol-body"><h3>Elevate Academy</h3><p>Practical training for you and your team to adopt, optimize, and get results.</p>
-        <a class="more" href="/trainyourbrain/">Explore Training <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>
+        <a class="more" href="/academy/">Explore the Academy <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>
     </div>
   </div>
 </section>
 
 <!-- NEXUS -->
 <section class="sec nexus on-dark" id="nexus">
-  <div class="wrap nexus-grid">
-    <div>
-      <img class="nx-brand" src="assets/nexus-logo-480.png" alt="Nexus by Elevate Ops 360" width="240" height="186" loading="lazy" decoding="async">
-      <span class="tag">Available now</span>
-      <h2>Nexus connects the AI you already use to your CRM.</h2>
-      <p class="lead">Ask in plain English. Nexus lets Claude, ChatGPT, Perplexity, Gemini, and other AI assistants work inside your CRM, so you stop copying and pasting between tools.</p>
-      <ul class="bullets">
-        <li><span class="ico"><svg class="icon"><use href="#i-bolt"/></svg></span><div><b>Speed to lead</b><span>Pull the lead's history, draft the first message, and queue the next task.</span></div></li>
-        <li><span class="ico"><svg class="icon"><use href="#i-search"/></svg></span><div><b>Database revival</b><span>Surface past clients and old inquiries worth a call, with outreach drafted for your review.</span></div></li>
-        <li><span class="ico"><svg class="icon"><use href="#i-shield"/></svg></span><div><b>You stay in control</b><span>Features vary by CRM and account permissions. Nothing replaces your judgment.</span></div></li>
+  <div class="wrap">
+    <div class="nx-intro">
+      <div>
+        <img class="nx-brand" src="assets/nexus-logo-480.png" alt="Nexus by Elevate Ops 360" width="240" height="186" loading="lazy" decoding="async">
+        <h2>Nexus gives you <span>clarity and control</span> over how your business runs.</h2>
+        <p class="lead">Custom dashboards, reporting, and workflows built around your business, so you can see what is happening, spend less time on administrative work, and focus on the work only you can do.</p>
+        <div class="cta-row" style="margin-bottom:0">
+          <a class="btn btn-teal" href="/nexus/"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>See Nexus in Action</a>
+          <a class="btn btn-ghost" href="#consult">Book a Strategy Call</a>
+        </div>
+      </div>
+      <ul class="nx-outcomes" aria-label="What Nexus can help you accomplish">
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span><div><b>Custom business and executive dashboards</b><span>See what matters across your business in one clear view.</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span><div><b>Client-facing dashboards and portals</b><span>Give clients a clear, professional window into their work with you.</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span><div><b>Customized reporting and business intelligence</b><span>Reports built around the questions you actually ask.</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></span><div><b>Workflow design and automation</b><span>Map how work should flow, then automate the repetitive steps.</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><div><b>CRM optimization and visibility</b><span>See what is happening in your CRM and where to act next.</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg></span><div><b>Connected processes, less admin</b><span>Connect your business processes and cut repetitive administrative work.</span></div></li>
       </ul>
-      <div class="cta-row" style="margin-bottom:0">
-        <a class="btn btn-teal" href="/nexus/"><svg class="icon"><use href="#i-play"/></svg>See Nexus in Action</a>
-        <a class="btn btn-ghost" href="#consult">Book an AI Strategy Call</a>
+    </div>
+
+    <div class="nx-ai">
+      <div>
+        <span class="kicker">One more benefit</span>
+        <h3>Put the AI assistant you already use to work in your business.</h3>
+        <p class="lead">Nexus can connect the AI assistant you already use to your CRM, helping your AI become a more useful part of running your business. Ask in plain English and stop copying and pasting between tools.</p>
+        <p class="fine">Features vary by CRM and account permissions. Designed so a person reviews each next step; nothing replaces your judgment.</p>
+      </div>
+      <div style="position:relative">
+        <div class="chat" role="img" aria-label="Illustrative mockup of a Nexus conversation">
+          <p class="who">You</p>
+          <div class="bubble">Find the past clients I haven't touched in a year and draft their outreach.</div>
+          <ul class="steps">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div>Searching your CRM<small>Past clients with no recent contact</small></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div>Ranking the opportunities<small>Who is most worth a call first</small></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg><div>Outreach drafted for your review<small>Drafted for your review before anything is sent</small></div></li>
+          </ul>
+        </div>
+        <span class="mock-badge">Illustrative mockup &middot; sample data</span>
       </div>
     </div>
-    <div style="position:relative">
-      <div class="chat" role="img" aria-label="Illustrative mockup of a Nexus conversation">
-        <p class="who">You</p>
-        <div class="bubble">Find the past clients I haven't touched in a year who may have built equity, and draft their outreach.</div>
-        <ul class="steps">
-          <li><svg class="icon"><use href="#i-check"/></svg><div>Searching your CRM<small>Past clients with no recent contact</small></div></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><div>Checking ownership and equity data<small>Where your connected data sources allow</small></div></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><div>Ranking the opportunities<small>Who is most worth a call first</small></div></li>
-          <li><svg class="icon"><use href="#i-doc"/></svg><div>Outreach drafted for your review<small>Drafted for your review before anything is sent</small></div></li>
-        </ul>
-        <p class="chat-foot"><svg class="icon"><use href="#i-people"/></svg>Designed so a person reviews each next step.</p>
-      </div>
-      <span class="mock-badge">Illustrative mockup</span>
+  </div>
+</section>
+
+<!-- WORKS WITH -->
+<section class="sec works" id="works-with" aria-labelledby="works-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="works-h">Nexus Works with the Systems You Already Use</h2>
+      <p>Keep your CRM. Keep the AI assistant you prefer. Nexus connects them.</p>
     </div>
+    <div class="works-grid">
+      <div class="works-box">
+        <h3>AI assistants</h3>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Perplexity</span><span class="chip">Gemini</span><span class="chip">and more</span></div>
+      </div>
+      <div class="works-box">
+        <h3>CRMs</h3>
+        <ul class="crm-logos" aria-label="Supported CRMs"><li><img src="/assets/crm/follow-up-boss.png" alt="Follow Up Boss" width="137" height="56" loading="lazy" decoding="async"></li><li><img src="/assets/crm/boldtrail.png" alt="BoldTrail" width="262" height="60" loading="lazy" decoding="async"></li><li><img src="/assets/crm/lofty.png" alt="Lofty" width="257" height="84" loading="lazy" decoding="async"></li><li><img src="/assets/crm/gohighlevel.png" alt="GoHighLevel" width="327" height="84" loading="lazy" decoding="async"></li><li><img src="/assets/crm/boomtown.png" alt="BoomTown" width="293" height="77" loading="lazy" decoding="async"></li><li><img src="/assets/crm/suresend.png" alt="" width="82" height="84" loading="lazy" decoding="async"><span class="nm">SureSend</span></li></ul>
+      </div>
+    </div>
+    <p class="fine">All names and logos are trademarks of their respective owners and are third-party products; their use does not imply endorsement. Integration depth varies by CRM and account permissions.</p>
   </div>
 </section>
 
@@ -238,60 +272,70 @@
   </div>
 </section>
 
-<!-- INDUSTRIES -->
-<section class="sec" id="real-estate">
+<!-- APPROACH -->
+<section class="sec" id="approach" aria-labelledby="appr-h">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Industries</span>
-      <h2>Real estate first. <span>Built to extend.</span></h2>
-      <p>We start where we know the work best, and design every system to adapt to other industries.</p>
+      <span class="kicker">Our approach</span>
+      <h2 id="appr-h">Custom solutions for <span>businesses across industries</span></h2>
+      <p>We diagnose your business challenges, then design solutions around your operations, your people, and the systems you already use. Real estate is one of our areas of expertise, not a prerequisite for working with us.</p>
     </div>
     <div class="ind">
       <div class="ind-card main">
-        <span class="tag" style="background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.4)">Available now</span>
-        <h3>Real Estate Teams and Agents</h3>
-        <p>Built from the day-to-day work of a working real estate team.</p>
+        <h3>Built around your business</h3>
         <ul class="ticks">
-          <li><svg class="icon"><use href="#i-check"/></svg>Faster, more consistent lead follow-up</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Cleaner CRM data and clearer next steps</li>
-          <li><svg class="icon"><use href="#i-check"/></svg>Works with Follow Up Boss, BoldTrail, Lofty, GoHighLevel, BoomTown, and SureSend. Features vary by CRM</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>We start by understanding how your business actually runs</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>We design around your operations and your people</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>We connect the systems you already use instead of replacing them</li>
         </ul>
-        <a class="btn btn-gold" style="width:max-content" href="#consult">Book an AI Strategy Call</a>
+        <a class="btn btn-gold" style="width:max-content" href="#consult">Book a Strategy Call</a>
       </div>
       <div class="ind-card">
-        <span class="tag">Custom engagements</span>
-        <h3>More industries</h3>
-        <p>Don't see your industry? We design and build custom workflows, assistants, and portals around your business. Tell us what you need.</p>
-        <a class="btn btn-outline" style="width:max-content;margin-top:auto" href="#consult">Start the Conversation</a>
+        <h3>Areas of expertise</h3>
+        <ul class="exp-links">
+          <li><a href="/solutions/business/">Business and professional services <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="/solutions/real-estate/">Real estate teams and agents <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="/solutions/legal/">Legal professionals <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+        <p>Don't see your industry? We design and build custom workflows, assistants, and portals around your business.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TECHNOLOGY WE WORK WITH -->
-<section class="sec tech on-dark" id="technology">
+<!-- MARBLISM -->
+<section class="sec marb on-dark" id="marblism" aria-labelledby="marb-h">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Technology we work with</span>
-      <h2>AI and automation tools we work with</h2>
-      <p>We are tool-aware, not tool-locked. These are third-party platforms we use and teach.</p>
+    <div class="marb-head">
+      <div class="plate"><img src="assets/marblism-wordmark-320.png" alt="Marblism" width="160" height="47" loading="lazy" decoding="async"></div>
+      <span class="kicker">Featured platform</span>
+      <h2 id="marb-h">Add a team of AI employees to your business with <span>Marblism</span></h2>
+      <p class="lead">Marblism gives you AI employees that handle everyday work such as email, scheduling, social media, lead follow-up, your website, search visibility, calls, and more. Elevate Ops 360 helps you choose, set up, and put them to work.</p>
     </div>
-    <div class="tech-grid">
-      <div class="featured">
-        <div class="plate"><img src="assets/marblism-wordmark-320.png" alt="Marblism" width="160" height="47" loading="lazy" decoding="async"></div>
-        <h3>Marblism</h3>
-        <p>An AI agent platform for business teams. We work with a range of AI and automation tools, including Marblism.</p>
-        <p class="note">Elevate Ops 360 is an approved Marblism agency and strategic partner. Marblism is a third-party product, not owned by Elevate Ops 360. <a href="https://www.marblism.com/agencies?type=agency" target="_blank" rel="noopener">See our listing in Marblism's agency directory</a>.</p>
-        <a class="btn btn-ghost" style="width:max-content" href="/trainyourbrain/">Explore Training <svg class="icon"><use href="#i-arrow"/></svg></a>
+
+    <ul class="agents" aria-label="Marblism AI employees"><li class="agent-card"><span class="face"><img src="assets/marblism/agents/eva.webp" alt="Eva, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Eva</b><span class="role">Executive Assistant</span><span class="what">Emails answered, meetings booked, notes taken.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/sonny.webp" alt="Sonny, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Sonny</b><span class="role">Social Media Manager</span><span class="what">Spots what is trending and creates posts and videos for your business.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/stan.webp" alt="Stan, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Stan</b><span class="role">Lead Generation</span><span class="what">Finds ideal customers and follows up until they reply.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/walter.webp" alt="Walter, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Walter</b><span class="role">Website Builder</span><span class="what">Builds your website and keeps improving it after launch.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/penny.webp" alt="Penny, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Penny</b><span class="role">SEO Expert</span><span class="what">Helps your business get found on Google and in AI search.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/rachel.webp" alt="Rachel, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Rachel</b><span class="role">Receptionist</span><span class="what">Answers calls day and night and books jobs into your calendar.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/linda.webp" alt="Linda, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Linda</b><span class="role">Legal Assistant</span><span class="what">Handles legal research and contract review.</span></div></li><li class="agent-card"><span class="face"><img src="assets/marblism/agents/allison.webp" alt="Allison, Marblism AI employee" width="56" height="56" loading="lazy" decoding="async"></span><div><b>Allison</b><span class="role">Account Executive</span><span class="what">Answers and makes customer calls and follows up with leads. Now in beta testing.</span></div></li></ul>
+
+    <div class="marb-grid">
+      <div class="offer" aria-labelledby="offer-h">
+        <span class="offer-badge">Referral offer</span>
+        <p class="offer-big" id="offer-h"><b>Extra 25% off</b> your Marblism subscription</p>
+        <p>Customers signing up through Sherri's referral link receive an extra 25% off their Marblism subscription for as long as they remain subscribed.</p>
+        <div class="cta-row" style="margin-bottom:0">
+          <a class="btn btn-gold" href="https://marblism.com?via=sherri-parsons" target="_blank" rel="noopener sponsored">Get My 25% Discount<span class="sr-only"> (opens Marblism in a new tab)</span></a>
+          <a class="btn btn-ghost" href="/academy/">Explore Training &amp; Implementation</a>
+        </div>
       </div>
-      <div class="chips-box">
-        <h4>AI assistants</h4>
-        <div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Perplexity</span><span class="chip">Gemini</span><span class="chip">and more</span></div>
-        <h4>Real estate CRMs</h4>
-        <ul class="crm-logos " aria-label="Supported CRMs"><li><img src="/assets/crm/follow-up-boss.png" alt="Follow Up Boss" width="137" height="56" loading="lazy" decoding="async"></li><li><img src="/assets/crm/boldtrail.png" alt="BoldTrail" width="262" height="60" loading="lazy" decoding="async"></li><li><img src="/assets/crm/lofty.png" alt="Lofty" width="257" height="84" loading="lazy" decoding="async"></li><li><img src="/assets/crm/gohighlevel.png" alt="GoHighLevel" width="327" height="84" loading="lazy" decoding="async"></li><li><img src="/assets/crm/boomtown.png" alt="BoomTown" width="293" height="77" loading="lazy" decoding="async"></li><li><img src="/assets/crm/suresend.png" alt="" width="82" height="84" loading="lazy" decoding="async"><span class="nm">SureSend</span></li></ul>
-        <p class="fine">All names are trademarks of their respective owners. Elevate Ops 360 is an approved Marblism agency; other listed tools are third-party products and do not imply endorsement or partnership. Integration depth varies by CRM and account permissions.</p>
+      <div class="marb-help">
+        <h3>How Elevate Ops 360 helps</h3>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><b>Onboarding</b> to get your AI employees set up around your business</div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><b>Implementation</b> so they connect with the tools and processes you already use</div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><b>Training</b> so you and your team know how to get real value from them</div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><b>Custom products, integrations, and workflows</b> that complement your Marblism agents</div></li>
+        </ul>
       </div>
     </div>
+    <p class="fine">Marblism is a third-party product and is not owned by Elevate Ops 360. Elevate Ops 360 is an approved Marblism agency and strategic partner (<a href="https://www.marblism.com/agencies?type=agency" target="_blank" rel="noopener">see our listing in Marblism's agency directory<span class="sr-only"> (opens in a new tab)</span></a>). Marblism names and logos are trademarks of their owner.</p>
   </div>
 </section>
 
@@ -301,9 +345,9 @@
     <div>
       <span class="kicker">Consultation</span>
       <h2>What's slowing your business down?</h2>
-      <p class="lead">Book an AI Strategy Call. We look at how leads, follow-up, and data move through your business, and show you where connected systems could help.</p>
+      <p class="lead">Book a Strategy Call. We look at how leads, follow-up, and data move through your business, and show you where connected systems could help.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding"><svg class="icon"><use href="#i-cal"/></svg>Book an AI Strategy Call</a>
+        <a class="btn btn-gold" href="https://calendly.com/sherriparsonsrealestate/elevate-ai-onboarding"><svg class="icon"><use href="#i-cal"/></svg>Book a Strategy Call</a>
         <a class="btn btn-ghost" href="#solutions">Explore Solutions</a>
       </div>
       <p class="alt-contact">Prefer email? <a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></p>
@@ -325,9 +369,9 @@
     <div class="sec-head"><h2>Common <span>questions</span></h2></div>
     <div class="faq">
       <details><summary>Who is Elevate Ops 360 for?</summary><p>Elevate Ops 360 works with real estate professionals, teams and brokerages, general businesses, and legal professionals. We design, build, and implement custom solutions around what each business needs.</p></details>
-      <details><summary>Is Nexus available now?</summary><p>Yes. Nexus connects your AI assistant to your CRM and business apps. Capabilities vary by CRM and account permissions, and we confirm what works with your setup on your AI Strategy Call.</p></details>
+      <details><summary>Is Nexus available now?</summary><p>Yes. Nexus connects your AI assistant to your CRM and business apps. Capabilities vary by CRM and account permissions, and we confirm what works with your setup on your Strategy Call.</p></details>
       <details><summary>Do I need to replace my CRM?</summary><p>No. We design around the tools you already use and connect them so information flows between them.</p></details>
-      <details><summary>What happens on an AI Strategy Call?</summary><p>We review how leads and follow-up move through your business, identify the bottlenecks, and outline practical next steps.</p></details>
+      <details><summary>What happens on a Strategy Call?</summary><p>We review how leads and follow-up move through your business, identify the bottlenecks, and outline practical next steps.</p></details>
       <details><summary>Is Marblism part of Elevate Ops 360?</summary><p>No. Marblism is a third-party platform, and Elevate Ops 360 is an approved Marblism agency and strategic partner. We work with a range of AI and automation tools, including Marblism, but it is not an Elevate Ops 360 product.</p></details>
     </div>
   </div>
@@ -341,8 +385,8 @@
         <a class="brand" href="#top"><img src="assets/mark-official-108.png" alt="" width="54" height="52"><span class="brand-text">Elevate <span>Ops 360</span></span></a>
         <p style="margin-top:14px;max-width:34ch">Business Problems. Smarter Solutions. Real Results.</p>
       </div>
-      <div><h3>Explore</h3><ul><li><a href="#solutions">Solutions</a></li><li><a href="/nexus/">Nexus</a></li><li><a href="#how">How It Works</a></li><li><a href="/trainyourbrain/">Training</a></li></ul></div>
-      <div><h3>Get started</h3><ul><li><a href="#consult">Book an AI Strategy Call</a></li><li><a href="/live/">Live events</a></li><li><a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></li></ul></div>
+      <div><h3>Explore</h3><ul><li><a href="#solutions">Solutions</a></li><li><a href="/nexus/">Nexus</a></li><li><a href="#how">How It Works</a></li><li><a href="#marblism">Marblism</a></li><li><a href="/academy/">Academy</a></li></ul></div>
+      <div><h3>Get started</h3><ul><li><a href="#consult">Book a Strategy Call</a></li><li><a href="/live/">Nexus demos</a></li><li><a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></li></ul></div>
     </div>
     <div class="legal"><span>&copy; 2026 Elevate Ops 360.</span><span><a href="/privacy.html">Privacy Policy</a> &middot; <a href="mailto:hello@elevateops360.com">hello@elevateops360.com</a></span></div>
   </div>
