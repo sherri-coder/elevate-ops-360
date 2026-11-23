@@ -1,0 +1,18 @@
+.ac-hero em{color:#0b5a57;font-style:italic}.ac-hero h1{max-width:22ch}.ac-hero{padding-top:56px!important}
+.stats-sec{padding:0}.stats{list-style:none;margin:0;padding:24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-radius:18px;background:linear-gradient(180deg,#0a2540,#06182b);color:#fff}
+.stats li{text-align:center}.stats b{display:block;font-size:1.7rem;color:#e9d3a2}.stats span{font-size:.9rem;color:#cfe3ea}
+.aff-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.aff-card{border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:24px;background:#fff}.aff-card b{display:block;font-size:1.8rem;color:#7a5d2a}.aff-card h3{margin:8px 0}.aff-card p{margin:0;color:#33424d}
+.su-form .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400}.su-form .chk input{width:auto;margin-top:4px}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}.aff-cards{grid-template-columns:1fr}}
+.pla .btn-ghost{color:#0a2540;border-color:#0a2540;background:transparent}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{margin:12px 0 0;font-weight:600}.form-status.ok{color:#0b5a57}.form-status.err{color:#9b1c1c}
+.su-form input,.su-form textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid rgba(0,0,0,.35);border-radius:10px;background:#fff}
+.su-form .chk{font-weight:400;margin-top:16px}.su-form button{margin-top:16px}
+.aff-terms details{border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#fff;padding:0 22px;margin-bottom:12px}
+.aff-terms summary{cursor:pointer;font-weight:700;padding:18px 0}.aff-terms .terms-body{padding-bottom:20px;color:#33424d}
+.aff-terms .terms-body h2{font-size:1.2rem;margin:0 0 10px}.aff-terms ul{padding-left:20px}.aff-terms li{margin:10px 0}
+.aff-terms table{width:100%;border-collapse:collapse}.aff-terms td{border:1px solid rgba(0,0,0,.15);padding:8px}.aff-terms .table{overflow-x:auto}
+.ac-hero{padding-top:150px!important}@media(max-width:1180px){.ac-hero{padding-top:200px!important}}
+.aff-cards+.fine,.pla .fine{margin-top:16px}.su-grid h2{margin-top:0}
