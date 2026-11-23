@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nexus Demos | Elevate Ops 360</title>
-<meta name="description" content="Join a live Nexus demo from Elevate Ops 360. Next demo: Monday, November 23, 2026 at 7:00 PM Eastern. Sign up free.">
+<meta name="description" content="Join a live Nexus demo from Elevate Ops 360. Upcoming demos: December 3, December 11 and December 18, 2026 at 7:00 PM Eastern. Sign up free.">
 <link rel="canonical" href="https://www.elevateops360.com/live/">
 <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -82,7 +82,34 @@
         <p class="when">Monday, November 23, 2026 &middot; 7:00 PM Eastern &middot; Live on Microsoft Teams</p>
         <p>A live walkthrough of Nexus: how it connects your AI assistant to your CRM, what you can ask it, and how a person stays in control of every next step. Features vary by CRM and account permissions.</p>
       </div>
-      <a class="btn btn-gold" href="#signup" data-demo="2026-11-23">Sign up</a>
+      <a class="btn btn-gold" href="#signup" data-demo="2026-11-23" data-label="Monday, November 23, 2026" data-time="7:00 PM Eastern">Sign up</a>
+    </article>
+    <article class="demo">
+      <div class="demo-date" aria-hidden="true"><b>DEC</b><span>3</span></div>
+      <div class="demo-body">
+        <h3>Nexus Live Demo</h3>
+        <p class="when">Thursday, December 3, 2026 &middot; 7:00 PM Eastern &middot; Live on Microsoft Teams</p>
+        <p>A live walkthrough of Nexus: how it connects your AI assistant to your CRM, what you can ask it, and how a person stays in control of every next step. Features vary by CRM and account permissions.</p>
+      </div>
+      <a class="btn btn-gold" href="#signup" data-demo="2026-12-03" data-label="Thursday, December 3, 2026" data-time="7:00 PM Eastern">Sign up</a>
+    </article>
+    <article class="demo">
+      <div class="demo-date" aria-hidden="true"><b>DEC</b><span>11</span></div>
+      <div class="demo-body">
+        <h3>Nexus Live Demo</h3>
+        <p class="when">Friday, December 11, 2026 &middot; 7:00 PM Eastern &middot; Live on Microsoft Teams</p>
+        <p>A live walkthrough of Nexus: how it connects your AI assistant to your CRM, what you can ask it, and how a person stays in control of every next step. Features vary by CRM and account permissions.</p>
+      </div>
+      <a class="btn btn-gold" href="#signup" data-demo="2026-12-11" data-label="Friday, December 11, 2026" data-time="7:00 PM Eastern">Sign up</a>
+    </article>
+    <article class="demo">
+      <div class="demo-date" aria-hidden="true"><b>DEC</b><span>18</span></div>
+      <div class="demo-body">
+        <h3>Nexus Live Demo</h3>
+        <p class="when">Friday, December 18, 2026 &middot; 7:00 PM Eastern &middot; Live on Microsoft Teams</p>
+        <p>A live walkthrough of Nexus: how it connects your AI assistant to your CRM, what you can ask it, and how a person stays in control of every next step. Features vary by CRM and account permissions.</p>
+      </div>
+      <a class="btn btn-gold" href="#signup" data-demo="2026-12-18" data-label="Friday, December 18, 2026" data-time="7:00 PM Eastern">Sign up</a>
     </article>
     <p class="fine">More demo dates will be added here as they are scheduled.</p>
   </div>
@@ -102,8 +129,9 @@
     </div>
     <form id="registration" class="su-form" action="https://formspree.io/f/myekrdro" method="POST">
       <input type="hidden" name="event_name" value="Nexus Live Demo">
-      <input type="hidden" name="event_date" value="2026-11-23">
+      <input type="hidden" name="event_date" value="2026-12-03">
       <input type="hidden" name="event_time" value="7:00 PM Eastern">
+      <p class="fine" id="chosen-demo" aria-live="polite">Registering for: Thursday, December 3, 2026 &middot; 7:00 PM Eastern</p>
       <input type="hidden" name="lead_source" value="Nexus Demo Registration">
       <label for="first">First name *</label><input id="first" name="first_name" autocomplete="given-name" required>
       <label for="last">Last name *</label><input id="last" name="last_name" autocomplete="family-name" required>
@@ -134,6 +162,7 @@ var f=document.getElementById('registration');
 f.addEventListener('submit',async function(e){e.preventDefault();var b=f.querySelector('button'),s=document.getElementById('status');b.disabled=true;s.style.color='';s.textContent='Submitting your registration...';
 try{var r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});if(!r.ok)throw Error('failed');f.reset();s.style.color='#1f6b3a';s.textContent='Thank you! Your registration has been received.';}
 catch(err){s.style.color='#a33131';s.textContent='Registration could not be submitted. Please try again.';}finally{b.disabled=false;}});
+document.querySelectorAll('[data-demo]').forEach(function(a){a.addEventListener('click',function(){f.event_date.value=a.dataset.demo;f.event_time.value=a.dataset.time;document.getElementById('chosen-demo').textContent='Registering for: '+a.dataset.label+' \u00b7 '+a.dataset.time;});});
 var b=document.querySelector('.menu-btn'),n=document.getElementById('primary-nav');if(b&&n)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');});
 })();
 </script></body></html>
