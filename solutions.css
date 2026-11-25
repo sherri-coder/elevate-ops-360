@@ -52,3 +52,8 @@
 .fine,.beyond{font-size:.9rem;color:#4a5568;margin:8px 0 14px}
 @media (max-width:860px){.feature,.feature.rev{grid-template-columns:1fr;gap:0}.feature.rev .feature-img{order:0}.feature-img{min-height:220px}.feature-body,.feature.rev .feature-body{padding:24px 20px 26px}}
 @media(max-width:1180px){.top-dark{padding-top:168px}}
+
+/* Powered by Nexus endorsement mark (messaging update, Nov 25 2026) */
+.pbn{display:inline-block;margin:2px 0 10px;padding:3px 11px;border:1px solid #C8A96B;border-radius:999px;background:#F7F4EF;color:#3F3A37;font:600 .72rem/1.5 var(--font-body,inherit);letter-spacing:.04em;vertical-align:middle;white-space:nowrap}
+li .pbn{display:block;width:max-content;margin:6px 0 0}
+.on-dark li span.pbn,.on-dark span.pbn,li span.pbn{color:#3F3A37}
