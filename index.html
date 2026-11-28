@@ -13,6 +13,20 @@
 <link rel="stylesheet" href="round2.css">
 <link rel="stylesheet" href="/solutions.css">
   <link rel="icon" type="image/png" href="assets/favicon-official-64.png">
+<style>
+.vid-btn{position:absolute;top:104px;right:28px;z-index:25;width:96px;height:96px;padding:0;border:2px solid #C8A96B;border-radius:50%;background:#0b1a24 url(assets/video/intro-poster.jpg) center 22%/cover no-repeat;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s}
+.vid-btn:hover,.vid-btn:focus-visible{transform:scale(1.06)}
+.vid-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.vid-btn .play{position:absolute;right:-2px;bottom:-2px;width:34px;height:34px;border-radius:50%;background:#C8A96B;display:grid;place-items:center}
+.vid-btn .play:after{content:"";margin-left:3px;border-left:11px solid #1b1714;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.vid-lbl{position:absolute;top:206px;right:20px;z-index:25;width:112px;text-align:center;font:600 .78rem/1.2 var(--font-body,inherit);color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7);pointer-events:none}
+.vid-dlg{border:0;padding:0;background:#000;border-radius:14px;max-width:92vw;overflow:hidden}
+.vid-dlg::backdrop{background:rgba(0,0,0,.78)}
+.vid-dlg video{display:block;height:min(82vh,760px);max-width:92vw;width:auto;background:#000}
+.vid-x{position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font:400 1.6rem/1 sans-serif;cursor:pointer}
+.vid-x:focus-visible{outline:3px solid #C8A96B}
+@media (max-width:760px){.vid-btn{top:150px;right:16px;width:64px;height:64px}.vid-btn .play{width:26px;height:26px}.vid-btn .play:after{border-left-width:8px;border-top-width:5px;border-bottom-width:5px;margin-left:2px}.vid-lbl{top:218px;right:8px;width:80px;font-size:.7rem}}
+</style>
 </head>
 <body>
 <!-- Icon sprite -->
@@ -43,6 +57,15 @@
 
 <a class="skip" href="#main">Skip to main content</a>
 
+<button class="vid-btn" type="button" aria-label="Play the Elevate Ops 360 video" aria-haspopup="dialog"><span class="play" aria-hidden="true"></span></button><span class="vid-lbl" aria-hidden="true">Watch the video</span>
+<dialog class="vid-dlg" id="vid-dlg" aria-label="Elevate Ops 360 video"><button class="vid-x" type="button" aria-label="Close video">&times;</button><video controls playsinline preload="none" poster="assets/video/intro-poster.jpg"><source data-src="assets/video/intro.mp4" type="video/mp4"></video></dialog>
+<script>
+(function(){var b=document.querySelector('.vid-btn'),d=document.getElementById('vid-dlg');if(!b||!d||!d.showModal)return;var v=d.querySelector('video'),src=d.querySelector('source');
+b.addEventListener('click',function(){if(!src.src){src.src=src.getAttribute('data-src');v.load();}d.showModal();v.play().catch(function(){});});
+d.querySelector('.vid-x').addEventListener('click',function(){d.close();});
+d.addEventListener('click',function(e){if(e.target===d)d.close();});
+d.addEventListener('close',function(){v.pause();b.focus();});})();
+</script>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
     <a class="brand" href="#top" aria-label="Elevate Ops 360 home">
